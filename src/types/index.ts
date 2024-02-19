@@ -24,12 +24,12 @@ type PickNotNullable<T> = {
   [P in keyof T as null extends T[P] ? never : P]: T[P];
 };
 
-type FieldWithArgs = {
+export type FieldWithArgs = {
   __typename: "__Field";
   args: Record<string, any>;
-  data: BuilderProp | null;
+  data: any;
 };
-type FieldArguments<T> = {
+export type FieldArguments<T> = {
   [K in keyof PickNullable<T>]?: Exclude<T[K], null>;
 } & {
   [K in keyof PickNotNullable<T>]: T[K];
@@ -56,18 +56,12 @@ export type Builder<T extends BuilderProp> = T extends Array<infer E>
       : {
           args: FieldArguments<T["args"]>;
         }) & {
-      data: Builder<NonNullable<T["data"]>>;
+      data: NonNullable<T["data"]> extends BuilderProp
+        ? Builder<NonNullable<T["data"]>>
+        : boolean;
     }
   : Partial<{
       [K in keyof T]: NonNullable<T[K]> extends BuilderProp
         ? Builder<NonNullable<T[K]>>
         : boolean;
     }>;
-
-function c(): string | null {
-  return "".at(0) ?? null;
-}
-
-const a = {
-  b: c(),
-} as const;

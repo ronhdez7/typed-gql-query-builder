@@ -1,17 +1,15 @@
 import { GET_SCHEMA_QUERY } from "./constants";
-import { handleTypes } from "./kinds/types";
-import { GraphqlResponse } from "../types";
-import { __Schema, __TypeKind } from "../types/schema";
+import { handleTypes } from "./kinds/type";
+import { GraphqlResponse } from "../../types";
+import { __Schema, __TypeKind } from "../../types/schema";
 import * as fs from "fs";
+import { removeNullable } from "./utils";
 
 export async function generateTypes() {
-  // const FILENAME = "gql-builder.config.json";
-  // const FULL_PATH = `${process.cwd()}/${FILENAME}`;
-
   const schemaEndpoint = "https://graphql.anilist.co";
   // const schemaEndpoint = "https://countries.trevorblades.com";
   // const schemaEndpoint = "https://graphql-pokeapi.graphcdn.app/";
-  // console.log(GET_SCHEMA_QUERY);
+
   const data: GraphqlResponse<{ __schema: __Schema }> = (await (
     await fetch(schemaEndpoint, {
       method: "post",
@@ -24,36 +22,23 @@ export async function generateTypes() {
     throw new Error(`Err: ${data}`);
   }
 
-  console.log(JSON.stringify(data.data.__schema, null, 4));
-
   const schema = data.data.__schema;
 
   let output = "";
 
   // include imports
   output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n`;
-  output += `import { asBoolean, asNumber, asObject, asString, asUnknown, list, nullable, union } from "../lib/type-funcs";\n\n`;
+  output += `import { asBoolean, asNumber, asObject, asString, asUnknown, list, nullable, union } from "../lib/gen/type-funcs";\n\n`;
 
   for (const type of schema.types) {
     let value = handleTypes(type, true);
     if (!value) continue;
 
-    if (value.startsWith("nullable(")) {
-      value = value.slice(9, -1).trim();
-    }
+    value = removeNullable(value);
 
-    let section = "";
-    // if (type.kind === __TypeKind.ENUM) {
-    //   section = `export enum ${type.name} ${value};\n`;
-    // } else {
-    //   section = `export type ${type.name} = ${value};\n`;
-    // }
-    section = `export var ${type.name} = ${value}${
-      value.endsWith("}") ? " as const" : ""
+    let section = `export var ${type.name} = ${value}${
+      type.kind !== __TypeKind.SCALAR ? " as const" : ""
     };\n`;
-
-    // const identifier = type.kind === __TypeKind.ENUM ? "enum" : "type";
-    // const section = `export ${identifier} ${type.name} = ${value};\n`;
 
     output += section + "\n";
   }

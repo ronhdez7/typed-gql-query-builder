@@ -1,4 +1,4 @@
-export const SCALAR: Record<string, string> = {
+export const SCALAR_TYPES: Record<string, string> = {
   String: "string",
   Int: "number",
   ID: "string",

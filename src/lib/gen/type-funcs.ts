@@ -14,7 +14,7 @@ export function asBoolean(): boolean {
 }
 
 export function asObject(): object {
-  return {};
+  return Object();
 }
 
 export function nullable<T>(val: T): T | null {
@@ -22,7 +22,7 @@ export function nullable<T>(val: T): T | null {
 }
 
 export function list<T>(val: T): T[] {
-  return Array<T>();
+  return Array<T>(val);
 }
 
 export function union<T extends Array<any>>(...args: T): T[number] {

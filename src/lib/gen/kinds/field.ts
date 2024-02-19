@@ -1,5 +1,5 @@
-import { __Field } from "../../types/schema";
-import { handleTypes } from "./types";
+import { __Field } from "../../../types/schema";
+import { handleTypes } from "./type";
 
 export function handleFields(fields: __Field[]) {
   let output = "";
