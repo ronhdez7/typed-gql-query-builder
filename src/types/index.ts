@@ -1,3 +1,4 @@
+/* Graphql Response */
 interface GraphqlErrorLocation {
   line: number;
   column: number;
@@ -15,32 +16,50 @@ export interface GraphqlResponse<T> {
   errors?: GraphqlError[] | null;
 }
 
-type FieldWithArgs = { args: Record<string, any>; data: any };
+/* Lib types */
+type PickNullable<T> = {
+  [P in keyof T as null extends T[P] ? P : never]: T[P];
+};
+type PickNotNullable<T> = {
+  [P in keyof T as null extends T[P] ? never : P]: T[P];
+};
+
+type FieldWithArgs = {
+  __typename: "__Field";
+  args: Record<string, any>;
+  data: BuilderProp | null;
+};
+type FieldArguments<T> = {
+  [K in keyof PickNullable<T>]?: Exclude<T[K], null>;
+} & {
+  [K in keyof PickNotNullable<T>]: T[K];
+};
+
 export type BuilderProp = { [key: string]: any };
 export type BuilderResult = {
   [key: string]: BuilderResult | FieldWithArgs | boolean | undefined;
 };
-export type Builder<T extends BuilderProp> = T extends object
-  ? keyof T extends never
-    ? boolean
-    : // : T extends FieldWithArgs
-      // ? { args: T["args"]; data: Builder<NonNullable<T["data"]>> }
-      Partial<{
-        [U in keyof T]: NonNullable<T[U]> extends object
-          ? NonNullable<T[U]> extends FieldWithArgs
-            ? {
-                args: Partial<NonNullable<T[U]>["args"]>;
-                data: NonNullable<T[U]["data"]> extends Array<any>
-                  ? NonNullable<T[U]["data"]>[number] extends object
-                    ? Builder<NonNullable<T[U]["data"]>[number]>
-                    : boolean
-                  : Builder<NonNullable<T[U]["data"]>>;
-              }
-            : NonNullable<T[U]> extends Array<any>
-            ? NonNullable<T[U]>[number] extends object
-              ? Builder<NonNullable<T[U]>[number]>
-              : boolean
-            : Builder<NonNullable<T[U]>>
-          : boolean;
-      }>
-  : boolean;
+export type Builder<T extends BuilderProp> = T extends Array<infer E>
+  ? // get rid of arrays
+    E extends BuilderProp
+    ? Builder<E>
+    : never // only if arrays doesn't have objects
+  : // if no keys, then allow boolean
+  keyof T extends never
+  ? boolean
+  : // query-builder
+  T extends FieldWithArgs
+  ? (keyof PickNotNullable<T["args"]> extends never
+      ? {
+          args?: FieldArguments<T["args"]>;
+        }
+      : {
+          args: FieldArguments<T["args"]>;
+        }) & {
+      data: Builder<NonNullable<T["data"]>>;
+    }
+  : Partial<{
+      [K in keyof T]: NonNullable<T[K]> extends BuilderProp
+        ? Builder<NonNullable<T[K]>>
+        : boolean;
+    }>;

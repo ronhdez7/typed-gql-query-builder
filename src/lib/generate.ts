@@ -10,6 +10,7 @@ export async function generateTypes() {
 
   const schemaEndpoint = "https://graphql.anilist.co";
   // const schemaEndpoint = "https://countries.trevorblades.com";
+  // const schemaEndpoint = "https://graphql-pokeapi.graphcdn.app/";
   // console.log(GET_SCHEMA_QUERY);
   const data: GraphqlResponse<{ __schema: __Schema }> = (await (
     await fetch(schemaEndpoint, {
@@ -30,7 +31,7 @@ export async function generateTypes() {
   let output = "";
 
   // include imports
-  output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n`;
+  output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n\n`;
 
   for (const type of schema.types) {
     let value = handleTypes(type, true);
