@@ -1,6 +1,8 @@
 import { Builder, BuilderProp, BuilderResult } from "../types";
 
 export class QueryBuilder<Query extends BuilderProp> {
+  constructor(private readonly _query: Query) {}
+
   query(query: Builder<Query>) {
     let output = "query {\n";
 
@@ -13,13 +15,15 @@ export class QueryBuilder<Query extends BuilderProp> {
 
 function parseFields(query: BuilderResult) {
   let output = "";
+
   for (const key in query) {
-    if (typeof query[key] === "undefined") return;
+    if (typeof query[key] === "undefined") continue;
     else if (typeof query[key] === "boolean") {
       if (query[key] === false) continue;
       else output += key + "\n";
     } else {
-      output += key + " {\n";
+      output += key;
+      output += " {\n";
       output += parseFields(query[key] as any);
       output += "}\n";
     }

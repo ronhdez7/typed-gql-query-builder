@@ -13,9 +13,9 @@ export function handleFields(fields: __Field[]) {
       for (const arg of field.args) {
         section += `${arg.name}: ${handleTypes(arg.type)},\n`;
       }
-      section += `}, \ndata: ${handleTypes(field.type)}\n};\n`;
+      section += `}, \ndata: ${handleTypes(field.type)}\n},\n`;
     } else {
-      section += `${handleTypes(field.type)};\n`;
+      section += `${handleTypes(field.type)},\n`;
     }
 
     output += section;

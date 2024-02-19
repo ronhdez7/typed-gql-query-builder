@@ -63,3 +63,11 @@ export type Builder<T extends BuilderProp> = T extends Array<infer E>
         ? Builder<NonNullable<T[K]>>
         : boolean;
     }>;
+
+function c(): string | null {
+  return "".at(0) ?? null;
+}
+
+const a = {
+  b: c(),
+} as const;

@@ -6,3 +6,12 @@ export const SCALAR: Record<string, string> = {
   Float: "number",
   Json: "object",
 };
+
+export const SCALAR_FUNCS: Record<string, string> = {
+  String: "asString",
+  Int: "asNumber",
+  ID: "asString",
+  Boolean: "asBoolean",
+  Float: "asNumber",
+  Json: "asObject",
+};

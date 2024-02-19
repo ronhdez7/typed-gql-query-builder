@@ -16,7 +16,7 @@ export function handleTypes(
     if (define) {
       value = handleScalar(type);
     } else value = type.name;
-    value += " | null";
+    value = `nullable(${value})`;
   } else if (type.kind === __TypeKind.OBJECT) {
     if (type.fields) {
       value = "{\n";
@@ -25,19 +25,20 @@ export function handleTypes(
     } else {
       value += type.name;
     }
-    value += " | null";
+    value = `nullable(${value})`;
   } else if (type.kind === __TypeKind.NON_NULL) {
     let val = handleTypes(type.ofType);
-    if (val?.endsWith("| null")) {
-      val = val.slice(0, -6).trim();
+    if (val?.startsWith("nullable(")) {
+      val = val.slice(9, -1).trim();
     }
     return val;
   } else if (type.kind === __TypeKind.LIST) {
     let val = handleTypes(type.ofType) || "any";
-    if (val.endsWith("| null")) {
-      val = val.slice(0, -6).trim();
+    if (val.startsWith("nullable(")) {
+      val = val.slice(9, -1).trim();
     }
-    return `${val}[] | null`;
+    // return `${val}[] | null`;
+    return `nullable(list(${val}))`;
   } else if (type.kind === __TypeKind.INPUT_OBJECT) {
     if (type.inputFields) {
       value = "{\n";
@@ -49,7 +50,7 @@ export function handleTypes(
       value = type.name;
     }
 
-    value += " | null";
+    value = `nullable(${value})`;
   } else if (type.kind === __TypeKind.ENUM) {
     if (type.enumValues) {
       value = "{\n";
@@ -59,26 +60,28 @@ export function handleTypes(
       value = type.name;
     }
 
-    value += " | null";
+    value = `nullable(${value})`;
   } else if (type.kind === __TypeKind.UNION) {
     if (type.possibleTypes) {
-      value = "";
+      value = "union(";
       for (let i = 0; i < type.possibleTypes.length; i++) {
-        value += handleTypes(type.possibleTypes[i]!);
-        if (value.endsWith("| null")) {
-          value = value.slice(0, -6).trim();
+        let val = handleTypes(type.possibleTypes[i]!);
+        if (val?.startsWith("nullable(")) {
+          val = val.slice(9, -1).trim();
         }
         if (i !== type.possibleTypes.length - 1) {
-          value += " | ";
+          value += val + ", ";
+        } else {
+          value += val + ")";
         }
       }
     } else {
       value += type.name;
     }
 
-    value += " | null";
+    value = `nullable(${value})`;
   } else {
-    value += "any";
+    value += "asUnknown()";
   }
 
   return value;

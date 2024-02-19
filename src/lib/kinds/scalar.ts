@@ -1,6 +1,7 @@
 import { Scalar } from "../../types/type-kinds";
-import { SCALAR } from "../conversion";
+import { SCALAR, SCALAR_FUNCS } from "../conversion";
 
 export function handleScalar(type: Scalar) {
-  return SCALAR[type.name] ?? "unknown";
+  const scalar = SCALAR_FUNCS[type.name];
+  return scalar ? `${scalar}()` : "asUnknown()";
 }

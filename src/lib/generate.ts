@@ -31,22 +31,26 @@ export async function generateTypes() {
   let output = "";
 
   // include imports
-  output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n\n`;
+  output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n`;
+  output += `import { asBoolean, asNumber, asObject, asString, asUnknown, list, nullable, union } from "../lib/type-funcs";\n\n`;
 
   for (const type of schema.types) {
     let value = handleTypes(type, true);
     if (!value) continue;
 
-    if (value.endsWith("| null")) {
-      value = value.slice(0, -6).trim();
+    if (value.startsWith("nullable(")) {
+      value = value.slice(9, -1).trim();
     }
 
     let section = "";
-    if (type.kind === __TypeKind.ENUM) {
-      section = `export enum ${type.name} ${value};\n`;
-    } else {
-      section = `export type ${type.name} = ${value};\n`;
-    }
+    // if (type.kind === __TypeKind.ENUM) {
+    //   section = `export enum ${type.name} ${value};\n`;
+    // } else {
+    //   section = `export type ${type.name} = ${value};\n`;
+    // }
+    section = `export var ${type.name} = ${value}${
+      value.endsWith("}") ? " as const" : ""
+    };\n`;
 
     // const identifier = type.kind === __TypeKind.ENUM ? "enum" : "type";
     // const section = `export ${identifier} ${type.name} = ${value};\n`;
