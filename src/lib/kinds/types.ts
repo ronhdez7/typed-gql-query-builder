@@ -14,8 +14,9 @@ export function handleTypes(
     return null;
   } else if (type.kind === __TypeKind.SCALAR) {
     if (define) {
-      value = handleScalar(type) + " | null";
+      value = handleScalar(type);
     } else value = type.name;
+    value += " | null";
   } else if (type.kind === __TypeKind.OBJECT) {
     if (type.fields) {
       value = "{\n";

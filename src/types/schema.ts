@@ -38,7 +38,7 @@ export enum __TypeKind {
 export interface __Field {
   name: string;
   description: string | null;
-  args(includeDeprecated?: boolean): __InputValue[];
+  args: __InputValue[];
   type: __Type;
   isDeprecated: boolean;
   deprecationReason: string | null;
@@ -61,7 +61,7 @@ export interface __Directive {
   name: string;
   description: string | null;
   locations: __DirectiveLocation[];
-  args(includeDeprecated?: boolean): __InputValue[];
+  args: __InputValue[];
   isRepeatable: boolean;
 }
 
