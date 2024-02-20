@@ -28,7 +28,6 @@ export async function generateTypes() {
 
   // include imports
   output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n`;
-  output += `import { asBoolean, asNumber, asObject, asString, asUnknown, list, nullable, union } from "../lib/gen/type-funcs";\n\n`;
 
   for (const type of schema.types) {
     let value = handleTypes(type, true);
@@ -36,9 +35,12 @@ export async function generateTypes() {
 
     value = removeNullable(value);
 
-    let section = `export var ${type.name} = ${value}${
-      type.kind !== __TypeKind.SCALAR ? " as const" : ""
-    };\n`;
+    let section = "";
+    if (type.kind === __TypeKind.ENUM) {
+      section = `export enum ${type.name} ${value};\n`;
+    } else {
+      section = `export type ${type.name} = ${value};\n`;
+    }
 
     output += section + "\n";
   }

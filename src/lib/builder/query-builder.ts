@@ -6,12 +6,10 @@ import {
 } from "../../types";
 
 export class QueryBuilder<Query extends BuilderProp> {
-  constructor(private readonly _query: Query) {}
-
   query(query: Builder<Query>) {
     let output = "query {\n";
 
-    output += parseFields(query, this._query);
+    // output += parseFields(query);
 
     output += "}";
     return output;
@@ -62,53 +60,53 @@ export class QueryBuilder<Query extends BuilderProp> {
 //   return output;
 // }
 
-function parseFields(query: BuilderResult, queryModel: BuilderProp): string {
-  let output = "";
+// function parseFields(query: BuilderResult, queryModel: BuilderProp): string {
+//   let output = "";
 
-  for (const key in query) {
-    const field = query[key];
-    console.log(key + ": ", field);
+//   for (const key in query) {
+//     const field = query[key];
+//     console.log(key + ": ", field);
 
-    if (field === undefined || queryModel[key] === undefined) continue;
-    else if (field === false) continue;
-    else if (field === true) {
-      output += key + "\n";
-    } else {
-      output += key;
+//     if (field === undefined || queryModel[key] === undefined) continue;
+//     else if (field === false) continue;
+//     else if (field === true) {
+//       output += key + "\n";
+//     } else {
+//       output += key;
 
-      let fieldResults: BuilderResult;
-      let model: BuilderProp;
-      if (queryModel[key].__typename === "__Field") {
-        const fieldWithArgs: FieldWithArgs = field as any;
-        fieldResults = fieldWithArgs["data"];
-        model = queryModel[key]["data"];
-        console.log("model: ", queryModel[key]);
+//       let fieldResults: BuilderResult;
+//       let model: BuilderProp;
+//       if (queryModel[key].__typename === "__Field") {
+//         const fieldWithArgs: FieldWithArgs = field as any;
+//         fieldResults = fieldWithArgs["data"];
+//         model = queryModel[key]["data"];
+//         console.log("model: ", queryModel[key]);
 
-        const argKeys = Object.keys(fieldWithArgs.args);
-        if (argKeys && argKeys.length > 0) {
-          output += " (";
-          for (let k = 0; k < argKeys.length; k++) {
-            const argKey = argKeys[k];
-            if (!argKey) continue;
-            output += `${argKey}: ${fieldWithArgs.args[argKey]}`;
+//         const argKeys = Object.keys(fieldWithArgs.args);
+//         if (argKeys && argKeys.length > 0) {
+//           output += " (";
+//           for (let k = 0; k < argKeys.length; k++) {
+//             const argKey = argKeys[k];
+//             if (!argKey) continue;
+//             output += `${argKey}: ${fieldWithArgs.args[argKey]}`;
 
-            if (k !== argKeys.length - 1) {
-              output += ", ";
-            } else {
-              output += ")";
-            }
-          }
-        }
-      } else {
-        fieldResults = field as any;
-        model = queryModel[key];
-      }
+//             if (k !== argKeys.length - 1) {
+//               output += ", ";
+//             } else {
+//               output += ")";
+//             }
+//           }
+//         }
+//       } else {
+//         fieldResults = field as any;
+//         model = queryModel[key];
+//       }
 
-      output += " {\n";
-      output += parseFields(fieldResults, model);
-      output += "\n}";
-    }
-  }
+//       output += " {\n";
+//       output += parseFields(fieldResults, model);
+//       output += "\n}";
+//     }
+//   }
 
-  return output;
-}
+//   return output;
+// }

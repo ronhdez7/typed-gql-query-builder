@@ -2,19 +2,11 @@ import { gql } from "..";
 
 function main() {
   const query = gql().query({
-    Follower: {
+    Media: {
       args: {
-        userId: 1,
+        countryOfOrigin: 1,
       },
-      data: {
-        // about: {
-        //   args: {
-        //     asHtml: true,
-        //   },
-        //   data: true,
-        // },
-        bannerImage: false,
-      },
+      data: {},
     },
   });
 
