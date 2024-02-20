@@ -1,3 +1,3 @@
-import { generateTypes } from "./lib/gen/generate";
+import { generateSchema } from "./lib/gen";
 
-generateTypes();
+generateSchema();

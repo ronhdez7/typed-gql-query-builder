@@ -3,6 +3,7 @@ import { gql } from "..";
 function main() {
   const query = gql().query({
     Media: {
+      __typename: "__Field",
       args: {
         countryOfOrigin: 1,
       },

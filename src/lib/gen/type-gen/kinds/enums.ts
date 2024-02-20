@@ -1,4 +1,4 @@
-import { __EnumValue } from "../../../types/schema";
+import { __EnumValue } from "../../../../types/schema";
 
 export function handleEnums(enums: __EnumValue[]) {
   let output = "";

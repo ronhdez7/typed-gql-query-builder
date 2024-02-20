@@ -1,4 +1,4 @@
-import { Union } from "../../../types/type-kinds";
+import { Union } from "../../../../types/type-kinds";
 import { removeNullable } from "../utils";
 import { handleTypes } from "./type";
 

@@ -56,6 +56,7 @@ export type Builder<T extends BuilderProp> = T extends Array<infer E>
       : {
           args: FieldArguments<T["args"]>;
         }) & {
+      __typename: "__Field";
       data: NonNullable<T["data"]> extends BuilderProp
         ? Builder<NonNullable<T["data"]>>
         : boolean;

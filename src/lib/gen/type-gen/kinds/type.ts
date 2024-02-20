@@ -1,4 +1,4 @@
-import { __Type, __TypeKind } from "../../../types/schema";
+import { __Type, __TypeKind } from "../../../../types/schema";
 import { removeNullable } from "../utils";
 import { handleEnums } from "./enums";
 import { handleFields } from "./field";
