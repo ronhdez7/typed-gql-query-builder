@@ -24,11 +24,8 @@ type PickNotNullable<T> = {
   [P in keyof T as null extends T[P] ? never : P]: T[P];
 };
 
-export type FieldWithArgs = {
-  __typename: "__Field";
-  args: Record<string, any>;
-  data: any;
-};
+export type FieldWithArgs = ["__Field", Record<string, any>, any];
+
 export type FieldArguments<T> = {
   [K in keyof PickNullable<T>]?: Exclude<T[K], null>;
 } & {
@@ -40,7 +37,19 @@ export type BuilderResult = {
   [key: string]: BuilderResult | FieldWithArgs | boolean | undefined;
 };
 export type Builder<T extends BuilderProp> = T extends Array<infer E>
-  ? // get rid of arrays
+  ? T extends FieldWithArgs
+    ? (keyof PickNotNullable<T[1]> extends never
+        ? {
+            args?: FieldArguments<T[1]>;
+          }
+        : {
+            args: FieldArguments<T[1]>;
+          }) & {
+        data: NonNullable<T[2]> extends BuilderProp
+          ? Builder<NonNullable<T[2]>>
+          : boolean;
+      }
+    : // get rid of arrays
     E extends BuilderProp
     ? Builder<E>
     : never // only if arrays doesn't have objects
@@ -48,21 +57,17 @@ export type Builder<T extends BuilderProp> = T extends Array<infer E>
   keyof T extends never
   ? boolean
   : // query-builder
-  T extends FieldWithArgs
-  ? (keyof PickNotNullable<T["args"]> extends never
-      ? {
-          args?: FieldArguments<T["args"]>;
-        }
-      : {
-          args: FieldArguments<T["args"]>;
-        }) & {
-      __typename: "__Field";
-      data: NonNullable<T["data"]> extends BuilderProp
-        ? Builder<NonNullable<T["data"]>>
-        : boolean;
-    }
-  : Partial<{
+    Partial<{
       [K in keyof T]: NonNullable<T[K]> extends BuilderProp
         ? Builder<NonNullable<T[K]>>
         : boolean;
     }>;
+
+type B = [
+  "__Field",
+  {
+    ability: String;
+  },
+  any
+];
+let a: B extends FieldWithArgs ? B[3] : number = 2;

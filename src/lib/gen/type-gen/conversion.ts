@@ -4,7 +4,6 @@ export const SCALAR_TYPES: Record<string, string> = {
   ID: "string",
   Boolean: "boolean",
   Float: "number",
-  Json: "object",
 };
 
 export const SCALAR_FUNCS: Record<string, string> = {
@@ -13,5 +12,4 @@ export const SCALAR_FUNCS: Record<string, string> = {
   ID: "asString",
   Boolean: "asBoolean",
   Float: "asNumber",
-  Json: "asObject",
 };

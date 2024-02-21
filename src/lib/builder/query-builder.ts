@@ -6,14 +6,45 @@ import {
 } from "../../types";
 
 export class QueryBuilder<Query extends BuilderProp> {
+  constructor(private readonly schema: any) {}
+
   query(query: Builder<Query>) {
+    const querySchema = this.schema["Query"];
+    if (!querySchema) throw new Error("could not find schema");
+
     let output = "query {\n";
 
-    // output += parseFields(query);
+    output += parseFields(query as any, querySchema);
 
     output += "}";
     return output;
   }
+}
+
+function parseFields(query: BuilderResult, querySchema: any): string {
+  if (!querySchema) return "";
+
+  let output = "";
+
+  for (const fieldKey in query) {
+    switch (typeof query[fieldKey]) {
+      case "undefined":
+        continue;
+        break;
+      case "boolean":
+        if (query[fieldKey] === false) continue;
+        // grab all fields
+        break;
+      case "object":
+        // check if has args
+
+        break;
+      default:
+        continue;
+    }
+  }
+
+  return output;
 }
 
 // function parseFields(query: BuilderResult, realQuery: BuilderProp) {

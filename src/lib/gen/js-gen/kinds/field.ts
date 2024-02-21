@@ -9,11 +9,16 @@ export function handleFields(fields: __Field[]) {
     let section = `${field.name}: `;
 
     if (field.args && field.args.length > 0) {
-      section += `{\n__typename: "__Field",\nargs: {\n`;
+      // section += `{\n__typename: "__Field",\nargs: {\n`;
+      // for (const arg of field.args) {
+      //   section += `${arg.name}: ${handleTypes(arg.type)},\n`;
+      // }
+      // section += `}, \ndata: ${handleTypes(field.type)}\n},\n`;
+      section += `["__Field", {\n`;
       for (const arg of field.args) {
         section += `${arg.name}: ${handleTypes(arg.type)},\n`;
       }
-      section += `}, \ndata: ${handleTypes(field.type)}\n},\n`;
+      section += `},\n${handleTypes(field.type)}\n],\n`;
     } else {
       section += `${handleTypes(field.type)},\n`;
     }
