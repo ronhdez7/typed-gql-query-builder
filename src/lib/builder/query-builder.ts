@@ -3,6 +3,7 @@ import {
   BuilderProp,
   BuilderResult,
   FieldWithArgs,
+  QuerySchema,
 } from "../../types";
 
 export class QueryBuilder<Query extends BuilderProp> {
@@ -14,37 +15,84 @@ export class QueryBuilder<Query extends BuilderProp> {
 
     let output = "query {\n";
 
-    output += parseFields(query as any, querySchema);
+    output += this.parseFields(query as any, querySchema);
 
     output += "}";
     return output;
   }
-}
 
-function parseFields(query: BuilderResult, querySchema: any): string {
-  if (!querySchema) return "";
+  private parseFields(query: BuilderResult, querySchema: any): string {
+    if (!querySchema) return "";
 
-  let output = "";
+    let output = "";
 
-  for (const fieldKey in query) {
-    switch (typeof query[fieldKey]) {
-      case "undefined":
-        continue;
-        break;
-      case "boolean":
-        if (query[fieldKey] === false) continue;
-        // grab all fields
-        break;
-      case "object":
-        // check if has args
+    for (const fieldKey in query) {
+      if (typeof querySchema[fieldKey] === "undefined") continue;
 
-        break;
-      default:
-        continue;
+      const field = query[fieldKey];
+      output += fieldKey;
+
+      switch (typeof field) {
+        case "undefined":
+          continue;
+        case "boolean":
+          if (field === false) continue;
+          // grab all fields
+          output += "\n";
+          break;
+
+        case "object":
+          const fieldModel: QuerySchema[string] = querySchema[fieldKey];
+
+          if (typeof fieldModel === "string") {
+            output += ` {\n ${this.parseFields(
+              field,
+              this.schema[fieldModel]
+            )} \n}`;
+          } else if (fieldModel.length === 1) {
+            output += ` {\n ${this.parseFields(
+              field,
+              this.schema[fieldModel[0]]
+            )} \n}`;
+          } else {
+            const args = field["args"] as any;
+            const data = field["data"];
+            if (typeof data !== "object" || !args) return (output += "}");
+            output += ` (${this.parseArgs(args)})`;
+            output += ` {\n`;
+            const fieldName =
+              typeof fieldModel[2] === "string"
+                ? fieldModel[2]
+                : fieldModel[2][0];
+            // console.log(fieldName, this.schema[fieldName]);
+            output += this.parseFields(data, this.schema[fieldName]);
+            output += "\n}\n";
+          }
+
+          break;
+
+        default:
+          continue;
+      }
     }
+
+    return output;
   }
 
-  return output;
+  private parseArgs(args: Record<string, any>): string {
+    let output = "";
+
+    const keys = Object.keys(args);
+    for (let k = 0; k < keys.length; k++) {
+      const argKey = keys[k] ?? "";
+      const arg = args[argKey];
+      if (arg === undefined || arg === null) continue;
+      output += `${argKey}: ${arg}`;
+      if (k !== keys.length - 1) output += ",";
+    }
+
+    return output;
+  }
 }
 
 // function parseFields(query: BuilderResult, realQuery: BuilderProp) {

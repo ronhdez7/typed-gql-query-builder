@@ -34,7 +34,7 @@ export type FieldArguments<T> = {
 
 export type BuilderProp = { [key: string]: any };
 export type BuilderResult = {
-  [key: string]: BuilderResult | FieldWithArgs | boolean | undefined;
+  [key: string]: BuilderResult | boolean | undefined;
 };
 export type Builder<T extends BuilderProp> = T extends Array<infer E>
   ? T extends FieldWithArgs
@@ -63,11 +63,13 @@ export type Builder<T extends BuilderProp> = T extends Array<infer E>
         : boolean;
     }>;
 
-type B = [
-  "__Field",
-  {
-    ability: String;
-  },
-  any
-];
-let a: B extends FieldWithArgs ? B[3] : number = 2;
+export type QuerySchema = {
+  [key: string]: QueryField | string;
+};
+
+export type QueryField = {
+  [key: string]:
+    | string
+    | [string]
+    | ["__Field", Record<string, string | string[]>, string | [string]];
+};

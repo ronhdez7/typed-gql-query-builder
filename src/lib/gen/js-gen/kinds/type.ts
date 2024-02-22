@@ -35,7 +35,7 @@ export function handleTypes(
     case __TypeKind.NON_NULL:
       {
         let val = handleTypes(type.ofType) || `"any"`;
-        value = val;
+        value = val.slice(0, -1) + "!" + val.slice(-1);
       }
       break;
     case __TypeKind.LIST:

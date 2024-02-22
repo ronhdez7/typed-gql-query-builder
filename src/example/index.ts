@@ -1,17 +1,31 @@
 import { gql } from "..";
 
 function main() {
-  const query = gql().query({
-    Media: {
+  const query = gql().query("getAnime", {
+    pokemon: {
       args: {
-        averageScore: 1,
+        name: "ditto",
       },
       data: {
-        airingSchedule: {
-          data: {
-            pageInfo: {},
+        id: true,
+        name: true,
+        abilities: {
+          ability: {
+            name: true,
           },
         },
+        moves: {
+          move: {
+            name: true,
+          },
+        },
+        types: {
+          type: {
+            name: true,
+          },
+        },
+        message: true,
+        status: true,
       },
     },
   });

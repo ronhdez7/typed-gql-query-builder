@@ -4,7 +4,7 @@ export function handleEnums(enums: __EnumValue[]) {
   let output = "";
 
   for (const e of enums) {
-    let section = `${e.name}: "${e.name}",\n`;
+    let section = `${e.name}: "ENUM",\n`; // "${e.name}",\n`;
     output += section;
   }
 

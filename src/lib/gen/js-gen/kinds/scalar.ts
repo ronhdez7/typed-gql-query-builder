@@ -4,5 +4,6 @@ import { Scalar } from "../../../../types/type-kinds";
 export function handleScalar(type: Scalar) {
   // const scalar = SCALAR_TYPES[type.name];
   // return scalar ? `${scalar}` : "any";
-  return `"${type.name}"`;
+  // return `"${type.name}"`;
+  return `""`;
 }

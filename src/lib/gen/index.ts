@@ -6,9 +6,9 @@ import { generateTypes } from "./type-gen/gen-types";
 import { generateJS } from "./js-gen/js-gen";
 
 export async function generateSchema() {
-  const schemaEndpoint = "https://graphql.anilist.co";
+  // const schemaEndpoint = "https://graphql.anilist.co";
   // const schemaEndpoint = "https://countries.trevorblades.com";
-  // const schemaEndpoint = "https://graphql-pokeapi.graphcdn.app/";
+  const schemaEndpoint = "https://graphql-pokeapi.graphcdn.app/";
 
   const data: GraphqlResponse<{ __schema: __Schema }> = (await (
     await fetch(schemaEndpoint, {
