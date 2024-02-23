@@ -5,11 +5,7 @@ import * as fs from "fs";
 import { generateTypes } from "./type-gen/gen-types";
 import { generateJS } from "./js-gen/js-gen";
 
-export async function generateSchema() {
-  // const schemaEndpoint = "https://graphql.anilist.co";
-  // const schemaEndpoint = "https://countries.trevorblades.com";
-  const schemaEndpoint = "https://graphql-pokeapi.graphcdn.app/";
-
+export async function generateSchema(schemaEndpoint: string) {
   const data: GraphqlResponse<{ __schema: __Schema }> = (await (
     await fetch(schemaEndpoint, {
       method: "post",
@@ -30,8 +26,10 @@ export async function generateSchema() {
   output += `import { __Schema, __Directive, __DirectiveLocation, __EnumValue, __Field, __InputValue, __Type, __TypeKind } from "../types/schema";\n\n`;
 
   output += generateTypes(schema);
-  let out = generateJS(schema);
+  // let out = generateJS(schema);
+  output += "\n\n";
+  output += generateJS(schema);
 
   fs.writeFileSync(`${process.cwd()}/src/generated/output.ts`, output);
-  fs.writeFileSync(`${process.cwd()}/src/generated/out.ts`, out);
+  // fs.writeFileSync(`${process.cwd()}/src/generated/out.ts`, out);
 }

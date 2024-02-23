@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import {
   Builder,
   BuilderProp,
@@ -6,7 +8,7 @@ import {
   QuerySchema,
 } from "../../types";
 
-export class QueryBuilder<Query extends BuilderProp> {
+export class QueryBuilder2<Query extends BuilderProp> {
   constructor(private readonly schema: any) {}
 
   query(query: Builder<Query>) {

@@ -2,7 +2,7 @@ import { __Schema, __TypeKind } from "../../../types/schema";
 import { handleTypes } from "./kinds/type";
 
 export function generateJS(schema: __Schema): string {
-  let output = "export const Schema = {\n";
+  let output = "export const schema = {\n";
 
   for (const type of schema.types) {
     let value = handleTypes(type, true);
@@ -14,6 +14,6 @@ export function generateJS(schema: __Schema): string {
     output += section + "\n";
   }
 
-  output += "}";
+  output += "} as const";
   return output;
 }

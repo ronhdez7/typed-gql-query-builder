@@ -1,36 +1,31 @@
 import { gql } from "..";
+import { MediaListStatus } from "../generated/output";
 
 function main() {
-  const query = gql().query("getAnime", {
-    pokemon: {
+  const query = gql().query("getPokemon", {
+    Media: {
       args: {
-        name: "ditto",
+        id: 15125,
       },
       data: {
         id: true,
-        name: true,
-        abilities: {
-          ability: {
-            name: true,
-          },
-        },
-        moves: {
-          move: {
-            name: true,
-          },
-        },
-        types: {
-          type: {
-            name: true,
-          },
-        },
-        message: true,
-        status: true,
+        title: true,
       },
     },
   });
 
-  console.log(query);
+  const mutation = gql().mutation("mutate", {
+    SaveMediaListEntry: {
+      args: {
+        mediaId: 1,
+        status: MediaListStatus.CURRENT,
+      },
+      data: {},
+    },
+  });
+
+  // console.log(query);
+  console.log(mutation);
 }
 
 main();

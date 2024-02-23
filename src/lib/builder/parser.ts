@@ -21,6 +21,8 @@ export class QueryParser {
         const queryField = query[queryKey];
         const modelField = model[queryKey];
 
+        if (modelField === "ENUM") continue;
+
         if (
           typeof queryField === "undefined" ||
           typeof modelField === "undefined"
@@ -34,7 +36,7 @@ export class QueryParser {
           else valName = removeMark(grabString(modelField[2]));
           const newModel = this.schema[valName];
           if (typeof newModel !== "object") continue;
-          output += `{\n ${this.parseAllFields(newModel)}`;
+          output += `{\n ${this.parseAllFields(newModel)}\n}`;
         } else {
           let valName: string;
           let data: BuilderResult | boolean | undefined;
@@ -44,18 +46,6 @@ export class QueryParser {
           } else {
             // handle args
             const args = queryField["args"] as Record<string, any>;
-            // if (args && Object.keys(args).length > 0) {
-            //   output += " (";
-            //   const argKeys = Object.keys(args);
-            //   for (let k = 0; k < argKeys.length; k++) {
-            //     const argKey = argKeys[k]!;
-            //     const argVal = args[argKey];
-            //     if (argVal === undefined) continue;
-            //     output += `${argKey}: ${argVal}`;
-            //     if (k !== argKeys.length - 1) output += ",";
-            //   }
-            //   output += ")";
-            // }
             output += this.parseArguments(args);
             valName = removeMark(grabString(modelField[2]));
             data = queryField["data"];
@@ -94,6 +84,8 @@ export class QueryParser {
       else visited.push(key);
       output += "\n" + key;
       const val = model[key];
+
+      if (val === "ENUM") continue;
 
       if (typeof val === "undefined") continue;
       else if (typeof val === "string") {

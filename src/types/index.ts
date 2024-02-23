@@ -33,9 +33,11 @@ export type FieldArguments<T> = {
 };
 
 export type BuilderProp = { [key: string]: any };
-export type BuilderResult = {
-  [key: string]: BuilderResult | boolean | undefined;
-};
+export type BuilderResult =
+  | {
+      [key: string]: BuilderResult | boolean | undefined;
+    }
+  | boolean;
 export type Builder<T extends BuilderProp> = T extends Array<infer E>
   ? T extends FieldWithArgs
     ? (keyof PickNotNullable<T[1]> extends never
@@ -57,11 +59,12 @@ export type Builder<T extends BuilderProp> = T extends Array<infer E>
   keyof T extends never
   ? boolean
   : // query-builder
-    Partial<{
-      [K in keyof T]: NonNullable<T[K]> extends BuilderProp
-        ? Builder<NonNullable<T[K]>>
-        : boolean;
-    }>;
+    | Partial<{
+          [K in keyof T]: NonNullable<T[K]> extends BuilderProp
+            ? Builder<NonNullable<T[K]>> | boolean
+            : boolean;
+        }>
+      | boolean;
 
 export type QuerySchema = {
   [key: string]: QueryField | string;
