@@ -1,5 +1,5 @@
-import { QueryBuilder } from "./lib/builder/builder";
-import { BuilderProp, QuerySchema } from "./types";
+import { QueryBuilder } from "./lib/builder";
+import { BuilderProp } from "./types";
 
 export function gqlBuilder<
   Query extends BuilderProp = any,

@@ -1,4 +1,4 @@
-import { Builder, BuilderProp, BuilderResult, QuerySchema } from "../../types";
+import { Builder, BuilderProp, BuilderResult, QuerySchema } from "../types";
 import { QueryParser } from "./parser";
 
 export class QueryBuilder<

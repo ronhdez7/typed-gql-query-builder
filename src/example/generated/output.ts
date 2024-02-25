@@ -1,17 +1,5 @@
-import {
-  __Schema,
-  __Directive,
-  __DirectiveLocation,
-  __EnumValue,
-  __Field,
-  __InputValue,
-  __Type,
-  __TypeKind,
-} from "../../types/schema";
-
 export type Query = {
   Page: [
-    "__Field",
     {
       page: Int | null;
       perPage: Int | null;
@@ -19,7 +7,6 @@ export type Query = {
     Page | null
   ];
   Media: [
-    "__Field",
     {
       id: Int | null;
       idMal: Int | null;
@@ -49,23 +36,23 @@ export type Query = {
       isLicensed: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       idMal_not: Int | null;
-      idMal_in: Int[] | null;
-      idMal_not_in: Int[] | null;
+      idMal_in: Int | null[] | null;
+      idMal_not_in: Int | null[] | null;
       startDate_greater: FuzzyDateInt | null;
       startDate_lesser: FuzzyDateInt | null;
       startDate_like: String | null;
       endDate_greater: FuzzyDateInt | null;
       endDate_lesser: FuzzyDateInt | null;
       endDate_like: String | null;
-      format_in: MediaFormat[] | null;
+      format_in: MediaFormat | null[] | null;
       format_not: MediaFormat | null;
-      format_not_in: MediaFormat[] | null;
-      status_in: MediaStatus[] | null;
+      format_not_in: MediaFormat | null[] | null;
+      status_in: MediaStatus | null[] | null;
       status_not: MediaStatus | null;
-      status_not_in: MediaStatus[] | null;
+      status_not_in: MediaStatus | null[] | null;
       episodes_greater: Int | null;
       episodes_lesser: Int | null;
       duration_greater: Int | null;
@@ -74,27 +61,26 @@ export type Query = {
       chapters_lesser: Int | null;
       volumes_greater: Int | null;
       volumes_lesser: Int | null;
-      genre_in: String[] | null;
-      genre_not_in: String[] | null;
-      tag_in: String[] | null;
-      tag_not_in: String[] | null;
-      tagCategory_in: String[] | null;
-      tagCategory_not_in: String[] | null;
-      licensedBy_in: String[] | null;
-      licensedById_in: Int[] | null;
+      genre_in: String | null[] | null;
+      genre_not_in: String | null[] | null;
+      tag_in: String | null[] | null;
+      tag_not_in: String | null[] | null;
+      tagCategory_in: String | null[] | null;
+      tagCategory_not_in: String | null[] | null;
+      licensedBy_in: String | null[] | null;
+      licensedById_in: Int | null[] | null;
       averageScore_not: Int | null;
       averageScore_greater: Int | null;
       averageScore_lesser: Int | null;
       popularity_not: Int | null;
       popularity_greater: Int | null;
       popularity_lesser: Int | null;
-      source_in: MediaSource[] | null;
-      sort: MediaSort[] | null;
+      source_in: MediaSource | null[] | null;
+      sort: MediaSort | null[] | null;
     },
     Media | null
   ];
   MediaTrend: [
-    "__Field",
     {
       mediaId: Int | null;
       date: Int | null;
@@ -104,8 +90,8 @@ export type Query = {
       episode: Int | null;
       releasing: Boolean | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       date_greater: Int | null;
       date_lesser: Int | null;
       trending_greater: Int | null;
@@ -120,12 +106,11 @@ export type Query = {
       episode_greater: Int | null;
       episode_lesser: Int | null;
       episode_not: Int | null;
-      sort: MediaTrendSort[] | null;
+      sort: MediaTrendSort | null[] | null;
     },
     MediaTrend | null
   ];
   AiringSchedule: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -133,50 +118,47 @@ export type Query = {
       airingAt: Int | null;
       notYetAired: Boolean | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       episode_not: Int | null;
-      episode_in: Int[] | null;
-      episode_not_in: Int[] | null;
+      episode_in: Int | null[] | null;
+      episode_not_in: Int | null[] | null;
       episode_greater: Int | null;
       episode_lesser: Int | null;
       airingAt_greater: Int | null;
       airingAt_lesser: Int | null;
-      sort: AiringSort[] | null;
+      sort: AiringSort | null[] | null;
     },
     AiringSchedule | null
   ];
   Character: [
-    "__Field",
     {
       id: Int | null;
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: CharacterSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: CharacterSort | null[] | null;
     },
     Character | null
   ];
   Staff: [
-    "__Field",
     {
       id: Int | null;
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: StaffSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: StaffSort | null[] | null;
     },
     Staff | null
   ];
   MediaList: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -189,12 +171,12 @@ export type Query = {
       startedAt: FuzzyDateInt | null;
       completedAt: FuzzyDateInt | null;
       compareWithAuthList: Boolean | null;
-      userId_in: Int[] | null;
-      status_in: MediaListStatus[] | null;
-      status_not_in: MediaListStatus[] | null;
+      userId_in: Int | null[] | null;
+      status_in: MediaListStatus | null[] | null;
+      status_not_in: MediaListStatus | null[] | null;
       status_not: MediaListStatus | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
       startedAt_lesser: FuzzyDateInt | null;
@@ -202,12 +184,11 @@ export type Query = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort[] | null;
+      sort: MediaListSort | null[] | null;
     },
     MediaList | null
   ];
   MediaListCollection: [
-    "__Field",
     {
       userId: Int | null;
       userName: String | null;
@@ -219,8 +200,8 @@ export type Query = {
       forceSingleCompletedList: Boolean | null;
       chunk: Int | null;
       perChunk: Int | null;
-      status_in: MediaListStatus[] | null;
-      status_not_in: MediaListStatus[] | null;
+      status_in: MediaListStatus | null[] | null;
+      status_not_in: MediaListStatus | null[] | null;
       status_not: MediaListStatus | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
@@ -229,64 +210,58 @@ export type Query = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort[] | null;
+      sort: MediaListSort | null[] | null;
     },
     MediaListCollection | null
   ];
-  GenreCollection: String[] | null;
+  GenreCollection: String | null[] | null;
   MediaTagCollection: [
-    "__Field",
     {
       status: Int | null;
     },
-    MediaTag[] | null
+    MediaTag | null[] | null
   ];
   User: [
-    "__Field",
     {
       id: Int | null;
       name: String | null;
       isModerator: Boolean | null;
       search: String | null;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
     User | null
   ];
   Viewer: User | null;
   Notification: [
-    "__Field",
     {
       type: NotificationType | null;
       resetNotificationCount: Boolean | null;
-      type_in: NotificationType[] | null;
+      type_in: NotificationType | null[] | null;
     },
-    NotificationUnion | null
+    NotificationUnion
   ];
   Studio: [
-    "__Field",
     {
       id: Int | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: StudioSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: StudioSort | null[] | null;
     },
     Studio | null
   ];
   Review: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
       userId: Int | null;
       mediaType: MediaType | null;
-      sort: ReviewSort[] | null;
+      sort: ReviewSort | null[] | null;
     },
     Review | null
   ];
   Activity: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -298,28 +273,27 @@ export type Query = {
       hasRepliesOrTypeText: Boolean | null;
       createdAt: Int | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       userId_not: Int | null;
-      userId_in: Int[] | null;
-      userId_not_in: Int[] | null;
+      userId_in: Int | null[] | null;
+      userId_not_in: Int | null[] | null;
       messengerId_not: Int | null;
-      messengerId_in: Int[] | null;
-      messengerId_not_in: Int[] | null;
+      messengerId_in: Int | null[] | null;
+      messengerId_not_in: Int | null[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       type_not: ActivityType | null;
-      type_in: ActivityType[] | null;
-      type_not_in: ActivityType[] | null;
+      type_in: ActivityType | null[] | null;
+      type_not_in: ActivityType | null[] | null;
       createdAt_greater: Int | null;
       createdAt_lesser: Int | null;
-      sort: ActivitySort[] | null;
+      sort: ActivitySort | null[] | null;
     },
-    ActivityUnion | null
+    ActivityUnion
   ];
   ActivityReply: [
-    "__Field",
     {
       id: Int | null;
       activityId: Int | null;
@@ -327,23 +301,20 @@ export type Query = {
     ActivityReply | null
   ];
   Following: [
-    "__Field",
     {
       userId: Int;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
     User | null
   ];
   Follower: [
-    "__Field",
     {
       userId: Int;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
     User | null
   ];
   Thread: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -352,23 +323,21 @@ export type Query = {
       categoryId: Int | null;
       mediaCategoryId: Int | null;
       search: String | null;
-      id_in: Int[] | null;
-      sort: ThreadSort[] | null;
+      id_in: Int | null[] | null;
+      sort: ThreadSort | null[] | null;
     },
     Thread | null
   ];
   ThreadComment: [
-    "__Field",
     {
       id: Int | null;
       threadId: Int | null;
       userId: Int | null;
-      sort: ThreadCommentSort[] | null;
+      sort: ThreadCommentSort | null[] | null;
     },
-    ThreadComment[] | null
+    ThreadComment | null[] | null
   ];
   Recommendation: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -378,12 +347,11 @@ export type Query = {
       onList: Boolean | null;
       rating_greater: Int | null;
       rating_lesser: Int | null;
-      sort: RecommendationSort[] | null;
+      sort: RecommendationSort | null[] | null;
     },
     Recommendation | null
   ];
   Like: [
-    "__Field",
     {
       likeableId: Int | null;
       type: LikeableType | null;
@@ -391,7 +359,6 @@ export type Query = {
     User | null
   ];
   Markdown: [
-    "__Field",
     {
       markdown: String;
     },
@@ -400,13 +367,12 @@ export type Query = {
   AniChartUser: AniChartUser | null;
   SiteStatistics: SiteStatistics | null;
   ExternalLinkSourceCollection: [
-    "__Field",
     {
       id: Int | null;
       type: ExternalLinkType | null;
       mediaType: ExternalLinkMediaType | null;
     },
-    MediaExternalLink[] | null
+    MediaExternalLink | null[] | null
   ];
 };
 
@@ -415,18 +381,16 @@ export type Int = number;
 export type Page = {
   pageInfo: PageInfo | null;
   users: [
-    "__Field",
     {
       id: Int | null;
       name: String | null;
       isModerator: Boolean | null;
       search: String | null;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   media: [
-    "__Field",
     {
       id: Int | null;
       idMal: Int | null;
@@ -456,23 +420,23 @@ export type Page = {
       isLicensed: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       idMal_not: Int | null;
-      idMal_in: Int[] | null;
-      idMal_not_in: Int[] | null;
+      idMal_in: Int | null[] | null;
+      idMal_not_in: Int | null[] | null;
       startDate_greater: FuzzyDateInt | null;
       startDate_lesser: FuzzyDateInt | null;
       startDate_like: String | null;
       endDate_greater: FuzzyDateInt | null;
       endDate_lesser: FuzzyDateInt | null;
       endDate_like: String | null;
-      format_in: MediaFormat[] | null;
+      format_in: MediaFormat | null[] | null;
       format_not: MediaFormat | null;
-      format_not_in: MediaFormat[] | null;
-      status_in: MediaStatus[] | null;
+      format_not_in: MediaFormat | null[] | null;
+      status_in: MediaStatus | null[] | null;
       status_not: MediaStatus | null;
-      status_not_in: MediaStatus[] | null;
+      status_not_in: MediaStatus | null[] | null;
       episodes_greater: Int | null;
       episodes_lesser: Int | null;
       duration_greater: Int | null;
@@ -481,65 +445,61 @@ export type Page = {
       chapters_lesser: Int | null;
       volumes_greater: Int | null;
       volumes_lesser: Int | null;
-      genre_in: String[] | null;
-      genre_not_in: String[] | null;
-      tag_in: String[] | null;
-      tag_not_in: String[] | null;
-      tagCategory_in: String[] | null;
-      tagCategory_not_in: String[] | null;
-      licensedBy_in: String[] | null;
-      licensedById_in: Int[] | null;
+      genre_in: String | null[] | null;
+      genre_not_in: String | null[] | null;
+      tag_in: String | null[] | null;
+      tag_not_in: String | null[] | null;
+      tagCategory_in: String | null[] | null;
+      tagCategory_not_in: String | null[] | null;
+      licensedBy_in: String | null[] | null;
+      licensedById_in: Int | null[] | null;
       averageScore_not: Int | null;
       averageScore_greater: Int | null;
       averageScore_lesser: Int | null;
       popularity_not: Int | null;
       popularity_greater: Int | null;
       popularity_lesser: Int | null;
-      source_in: MediaSource[] | null;
-      sort: MediaSort[] | null;
+      source_in: MediaSource | null[] | null;
+      sort: MediaSort | null[] | null;
     },
-    Media[] | null
+    Media | null[] | null
   ];
   characters: [
-    "__Field",
     {
       id: Int | null;
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: CharacterSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: CharacterSort | null[] | null;
     },
-    Character[] | null
+    Character | null[] | null
   ];
   staff: [
-    "__Field",
     {
       id: Int | null;
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: StaffSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: StaffSort | null[] | null;
     },
-    Staff[] | null
+    Staff | null[] | null
   ];
   studios: [
-    "__Field",
     {
       id: Int | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: StudioSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: StudioSort | null[] | null;
     },
-    Studio[] | null
+    Studio | null[] | null
   ];
   mediaList: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -552,12 +512,12 @@ export type Page = {
       startedAt: FuzzyDateInt | null;
       completedAt: FuzzyDateInt | null;
       compareWithAuthList: Boolean | null;
-      userId_in: Int[] | null;
-      status_in: MediaListStatus[] | null;
-      status_not_in: MediaListStatus[] | null;
+      userId_in: Int | null[] | null;
+      status_in: MediaListStatus | null[] | null;
+      status_not_in: MediaListStatus | null[] | null;
       status_not: MediaListStatus | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
       startedAt_lesser: FuzzyDateInt | null;
@@ -565,12 +525,11 @@ export type Page = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort[] | null;
+      sort: MediaListSort | null[] | null;
     },
-    MediaList[] | null
+    MediaList | null[] | null
   ];
   airingSchedules: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -578,24 +537,23 @@ export type Page = {
       airingAt: Int | null;
       notYetAired: Boolean | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       episode_not: Int | null;
-      episode_in: Int[] | null;
-      episode_not_in: Int[] | null;
+      episode_in: Int | null[] | null;
+      episode_not_in: Int | null[] | null;
       episode_greater: Int | null;
       episode_lesser: Int | null;
       airingAt_greater: Int | null;
       airingAt_lesser: Int | null;
-      sort: AiringSort[] | null;
+      sort: AiringSort | null[] | null;
     },
-    AiringSchedule[] | null
+    AiringSchedule | null[] | null
   ];
   mediaTrends: [
-    "__Field",
     {
       mediaId: Int | null;
       date: Int | null;
@@ -605,8 +563,8 @@ export type Page = {
       episode: Int | null;
       releasing: Boolean | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       date_greater: Int | null;
       date_lesser: Int | null;
       trending_greater: Int | null;
@@ -621,37 +579,33 @@ export type Page = {
       episode_greater: Int | null;
       episode_lesser: Int | null;
       episode_not: Int | null;
-      sort: MediaTrendSort[] | null;
+      sort: MediaTrendSort | null[] | null;
     },
-    MediaTrend[] | null
+    MediaTrend | null[] | null
   ];
   notifications: [
-    "__Field",
     {
       type: NotificationType | null;
       resetNotificationCount: Boolean | null;
-      type_in: NotificationType[] | null;
+      type_in: NotificationType | null[] | null;
     },
     NotificationUnion[] | null
   ];
   followers: [
-    "__Field",
     {
       userId: Int;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   following: [
-    "__Field",
     {
       userId: Int;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   activities: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -663,36 +617,34 @@ export type Page = {
       hasRepliesOrTypeText: Boolean | null;
       createdAt: Int | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       userId_not: Int | null;
-      userId_in: Int[] | null;
-      userId_not_in: Int[] | null;
+      userId_in: Int | null[] | null;
+      userId_not_in: Int | null[] | null;
       messengerId_not: Int | null;
-      messengerId_in: Int[] | null;
-      messengerId_not_in: Int[] | null;
+      messengerId_in: Int | null[] | null;
+      messengerId_not_in: Int | null[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       type_not: ActivityType | null;
-      type_in: ActivityType[] | null;
-      type_not_in: ActivityType[] | null;
+      type_in: ActivityType | null[] | null;
+      type_not_in: ActivityType | null[] | null;
       createdAt_greater: Int | null;
       createdAt_lesser: Int | null;
-      sort: ActivitySort[] | null;
+      sort: ActivitySort | null[] | null;
     },
     ActivityUnion[] | null
   ];
   activityReplies: [
-    "__Field",
     {
       id: Int | null;
       activityId: Int | null;
     },
-    ActivityReply[] | null
+    ActivityReply | null[] | null
   ];
   threads: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -701,34 +653,31 @@ export type Page = {
       categoryId: Int | null;
       mediaCategoryId: Int | null;
       search: String | null;
-      id_in: Int[] | null;
-      sort: ThreadSort[] | null;
+      id_in: Int | null[] | null;
+      sort: ThreadSort | null[] | null;
     },
-    Thread[] | null
+    Thread | null[] | null
   ];
   threadComments: [
-    "__Field",
     {
       id: Int | null;
       threadId: Int | null;
       userId: Int | null;
-      sort: ThreadCommentSort[] | null;
+      sort: ThreadCommentSort | null[] | null;
     },
-    ThreadComment[] | null
+    ThreadComment | null[] | null
   ];
   reviews: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
       userId: Int | null;
       mediaType: MediaType | null;
-      sort: ReviewSort[] | null;
+      sort: ReviewSort | null[] | null;
     },
-    Review[] | null
+    Review | null[] | null
   ];
   recommendations: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -738,17 +687,16 @@ export type Page = {
       onList: Boolean | null;
       rating_greater: Int | null;
       rating_lesser: Int | null;
-      sort: RecommendationSort[] | null;
+      sort: RecommendationSort | null[] | null;
     },
-    Recommendation[] | null
+    Recommendation | null[] | null
   ];
   likes: [
-    "__Field",
     {
       likeableId: Int | null;
       type: LikeableType | null;
     },
-    User[] | null
+    User | null[] | null
   ];
 };
 
@@ -760,7 +708,7 @@ export type PageInfo = {
   hasNextPage: Boolean | null;
 };
 
-export type Boolean = boolean;
+export type Boolean = string;
 
 export type String = string;
 
@@ -780,7 +728,6 @@ export type User = {
   id: Int;
   name: String;
   about: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -795,7 +742,6 @@ export type User = {
   options: UserOptions | null;
   mediaListOptions: MediaListOptions | null;
   favourites: [
-    "__Field",
     {
       page: Int | null;
     },
@@ -806,12 +752,12 @@ export type User = {
   siteUrl: String | null;
   donatorTier: Int | null;
   donatorBadge: String | null;
-  moderatorRoles: ModRole[] | null;
+  moderatorRoles: ModRole | null[] | null;
   createdAt: Int | null;
   updatedAt: Int | null;
   stats: UserStats | null;
   moderatorStatus: String | null;
-  previousNames: UserPreviousName[] | null;
+  previousNames: UserPreviousName | null[] | null;
 };
 
 export type UserAvatar = {
@@ -826,12 +772,12 @@ export type UserOptions = {
   displayAdultContent: Boolean | null;
   airingNotifications: Boolean | null;
   profileColor: String | null;
-  notificationOptions: NotificationOption[] | null;
+  notificationOptions: NotificationOption | null[] | null;
   timezone: String | null;
   activityMergeTime: Int | null;
   staffNameLanguage: UserStaffNameLanguage | null;
   restrictMessagesToFollowing: Boolean | null;
-  disabledListActivity: ListActivityOption[] | null;
+  disabledListActivity: ListActivityOption | null[] | null;
 };
 
 export enum UserTitleLanguage {
@@ -907,17 +853,16 @@ export enum ScoreFormat {
 }
 
 export type MediaListTypeOptions = {
-  sectionOrder: String[] | null;
+  sectionOrder: String | null[] | null;
   splitCompletedSectionByFormat: Boolean | null;
   theme: Json | null;
-  customLists: String[] | null;
-  advancedScoring: String[] | null;
+  customLists: String | null[] | null;
+  advancedScoring: String | null[] | null;
   advancedScoringEnabled: Boolean | null;
 };
 
 export type Favourites = {
   anime: [
-    "__Field",
     {
       page: Int | null;
       perPage: Int | null;
@@ -925,7 +870,6 @@ export type Favourites = {
     MediaConnection | null
   ];
   manga: [
-    "__Field",
     {
       page: Int | null;
       perPage: Int | null;
@@ -933,7 +877,6 @@ export type Favourites = {
     MediaConnection | null
   ];
   characters: [
-    "__Field",
     {
       page: Int | null;
       perPage: Int | null;
@@ -941,7 +884,6 @@ export type Favourites = {
     CharacterConnection | null
   ];
   staff: [
-    "__Field",
     {
       page: Int | null;
       perPage: Int | null;
@@ -949,7 +891,6 @@ export type Favourites = {
     StaffConnection | null
   ];
   studios: [
-    "__Field",
     {
       page: Int | null;
       perPage: Int | null;
@@ -959,8 +900,8 @@ export type Favourites = {
 };
 
 export type MediaConnection = {
-  edges: MediaEdge[] | null;
-  nodes: Media[] | null;
+  edges: MediaEdge | null[] | null;
+  nodes: Media | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -968,34 +909,31 @@ export type MediaEdge = {
   node: Media | null;
   id: Int | null;
   relationType: [
-    "__Field",
     {
       version: Int | null;
     },
     MediaRelation | null
   ];
   isMainStudio: Boolean;
-  characters: Character[] | null;
+  characters: Character | null[] | null;
   characterRole: CharacterRole | null;
   characterName: String | null;
   roleNotes: String | null;
   dubGroup: String | null;
   staffRole: String | null;
   voiceActors: [
-    "__Field",
     {
       language: StaffLanguage | null;
-      sort: StaffSort[] | null;
+      sort: StaffSort | null[] | null;
     },
-    Staff[] | null
+    Staff | null[] | null
   ];
   voiceActorRoles: [
-    "__Field",
     {
       language: StaffLanguage | null;
-      sort: StaffSort[] | null;
+      sort: StaffSort | null[] | null;
     },
-    StaffRoleType[] | null
+    StaffRoleType | null[] | null
   ];
   favouriteOrder: Int | null;
 };
@@ -1007,14 +945,12 @@ export type Media = {
   type: MediaType | null;
   format: MediaFormat | null;
   status: [
-    "__Field",
     {
       version: Int | null;
     },
     MediaStatus | null
   ];
   description: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -1032,7 +968,6 @@ export type Media = {
   countryOfOrigin: CountryCode | null;
   isLicensed: Boolean | null;
   source: [
-    "__Field",
     {
       version: Int | null;
     },
@@ -1043,20 +978,19 @@ export type Media = {
   updatedAt: Int | null;
   coverImage: MediaCoverImage | null;
   bannerImage: String | null;
-  genres: String[] | null;
-  synonyms: String[] | null;
+  genres: String | null[] | null;
+  synonyms: String | null[] | null;
   averageScore: Int | null;
   meanScore: Int | null;
   popularity: Int | null;
   isLocked: Boolean | null;
   trending: Int | null;
   favourites: Int | null;
-  tags: MediaTag[] | null;
+  tags: MediaTag | null[] | null;
   relations: MediaConnection | null;
   characters: [
-    "__Field",
     {
-      sort: CharacterSort[] | null;
+      sort: CharacterSort | null[] | null;
       role: CharacterRole | null;
       page: Int | null;
       perPage: Int | null;
@@ -1064,18 +998,16 @@ export type Media = {
     CharacterConnection | null
   ];
   staff: [
-    "__Field",
     {
-      sort: StaffSort[] | null;
+      sort: StaffSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     StaffConnection | null
   ];
   studios: [
-    "__Field",
     {
-      sort: StudioSort[] | null;
+      sort: StudioSort | null[] | null;
       isMain: Boolean | null;
     },
     StudioConnection | null
@@ -1085,7 +1017,6 @@ export type Media = {
   isAdult: Boolean | null;
   nextAiringEpisode: AiringSchedule | null;
   airingSchedule: [
-    "__Field",
     {
       notYetAired: Boolean | null;
       page: Int | null;
@@ -1094,33 +1025,30 @@ export type Media = {
     AiringScheduleConnection | null
   ];
   trends: [
-    "__Field",
     {
-      sort: MediaTrendSort[] | null;
+      sort: MediaTrendSort | null[] | null;
       releasing: Boolean | null;
       page: Int | null;
       perPage: Int | null;
     },
     MediaTrendConnection | null
   ];
-  externalLinks: MediaExternalLink[] | null;
-  streamingEpisodes: MediaStreamingEpisode[] | null;
-  rankings: MediaRank[] | null;
+  externalLinks: MediaExternalLink | null[] | null;
+  streamingEpisodes: MediaStreamingEpisode | null[] | null;
+  rankings: MediaRank | null[] | null;
   mediaListEntry: MediaList | null;
   reviews: [
-    "__Field",
     {
       limit: Int | null;
-      sort: ReviewSort[] | null;
+      sort: ReviewSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     ReviewConnection | null
   ];
   recommendations: [
-    "__Field",
     {
-      sort: RecommendationSort[] | null;
+      sort: RecommendationSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -1136,21 +1064,18 @@ export type Media = {
 
 export type MediaTitle = {
   romaji: [
-    "__Field",
     {
       stylised: Boolean | null;
     },
     String | null
   ];
   english: [
-    "__Field",
     {
       stylised: Boolean | null;
     },
     String | null
   ];
   native: [
-    "__Field",
     {
       stylised: Boolean | null;
     },
@@ -1261,8 +1186,8 @@ export enum CharacterRole {
 }
 
 export type CharacterConnection = {
-  edges: CharacterEdge[] | null;
-  nodes: Character[] | null;
+  edges: CharacterEdge | null[] | null;
+  nodes: Character | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1272,22 +1197,20 @@ export type CharacterEdge = {
   role: CharacterRole | null;
   name: String | null;
   voiceActors: [
-    "__Field",
     {
       language: StaffLanguage | null;
-      sort: StaffSort[] | null;
+      sort: StaffSort | null[] | null;
     },
-    Staff[] | null
+    Staff | null[] | null
   ];
   voiceActorRoles: [
-    "__Field",
     {
       language: StaffLanguage | null;
-      sort: StaffSort[] | null;
+      sort: StaffSort | null[] | null;
     },
-    StaffRoleType[] | null
+    StaffRoleType | null[] | null
   ];
-  media: Media[] | null;
+  media: Media | null[] | null;
   favouriteOrder: Int | null;
 };
 
@@ -1296,7 +1219,6 @@ export type Character = {
   name: CharacterName | null;
   image: CharacterImage | null;
   description: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -1310,9 +1232,8 @@ export type Character = {
   isFavouriteBlocked: Boolean;
   siteUrl: String | null;
   media: [
-    "__Field",
     {
-      sort: MediaSort[] | null;
+      sort: MediaSort | null[] | null;
       type: MediaType | null;
       onList: Boolean | null;
       page: Int | null;
@@ -1331,8 +1252,8 @@ export type CharacterName = {
   last: String | null;
   full: String | null;
   native: String | null;
-  alternative: String[] | null;
-  alternativeSpoiler: String[] | null;
+  alternative: String | null[] | null;
+  alternativeSpoiler: String | null[] | null;
   userPreferred: String | null;
 };
 
@@ -1414,27 +1335,25 @@ export type Staff = {
   languageV2: String | null;
   image: StaffImage | null;
   description: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
     String | null
   ];
-  primaryOccupations: String[] | null;
+  primaryOccupations: String | null[] | null;
   gender: String | null;
   dateOfBirth: FuzzyDate | null;
   dateOfDeath: FuzzyDate | null;
   age: Int | null;
-  yearsActive: Int[] | null;
+  yearsActive: Int | null[] | null;
   homeTown: String | null;
   bloodType: String | null;
   isFavourite: Boolean;
   isFavouriteBlocked: Boolean;
   siteUrl: String | null;
   staffMedia: [
-    "__Field",
     {
-      sort: MediaSort[] | null;
+      sort: MediaSort | null[] | null;
       type: MediaType | null;
       onList: Boolean | null;
       page: Int | null;
@@ -1443,18 +1362,16 @@ export type Staff = {
     MediaConnection | null
   ];
   characters: [
-    "__Field",
     {
-      sort: CharacterSort[] | null;
+      sort: CharacterSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     CharacterConnection | null
   ];
   characterMedia: [
-    "__Field",
     {
-      sort: MediaSort[] | null;
+      sort: MediaSort | null[] | null;
       onList: Boolean | null;
       page: Int | null;
       perPage: Int | null;
@@ -1476,7 +1393,7 @@ export type StaffName = {
   last: String | null;
   full: String | null;
   native: String | null;
-  alternative: String[] | null;
+  alternative: String | null[] | null;
   userPreferred: String | null;
 };
 
@@ -1492,8 +1409,8 @@ export type StaffRoleType = {
 };
 
 export type StaffConnection = {
-  edges: StaffEdge[] | null;
-  nodes: Staff[] | null;
+  edges: StaffEdge | null[] | null;
+  nodes: Staff | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1515,8 +1432,8 @@ export enum StudioSort {
 }
 
 export type StudioConnection = {
-  edges: StudioEdge[] | null;
-  nodes: Studio[] | null;
+  edges: StudioEdge | null[] | null;
+  nodes: Studio | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1532,9 +1449,8 @@ export type Studio = {
   name: String;
   isAnimationStudio: Boolean;
   media: [
-    "__Field",
     {
-      sort: MediaSort[] | null;
+      sort: MediaSort | null[] | null;
       isMain: Boolean | null;
       onList: Boolean | null;
       page: Int | null;
@@ -1557,8 +1473,8 @@ export type AiringSchedule = {
 };
 
 export type AiringScheduleConnection = {
-  edges: AiringScheduleEdge[] | null;
-  nodes: AiringSchedule[] | null;
+  edges: AiringScheduleEdge | null[] | null;
+  nodes: AiringSchedule | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1585,8 +1501,8 @@ export enum MediaTrendSort {
 }
 
 export type MediaTrendConnection = {
-  edges: MediaTrendEdge[] | null;
-  nodes: MediaTrend[] | null;
+  edges: MediaTrendEdge | null[] | null;
+  nodes: MediaTrend | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1654,7 +1570,6 @@ export type MediaList = {
   mediaId: Int;
   status: MediaListStatus | null;
   score: [
-    "__Field",
     {
       format: ScoreFormat | null;
     },
@@ -1668,7 +1583,6 @@ export type MediaList = {
   notes: String | null;
   hiddenFromStatusLists: Boolean | null;
   customLists: [
-    "__Field",
     {
       asArray: Boolean | null;
     },
@@ -1699,8 +1613,8 @@ export enum ReviewSort {
 }
 
 export type ReviewConnection = {
-  edges: ReviewEdge[] | null;
-  nodes: Review[] | null;
+  edges: ReviewEdge | null[] | null;
+  nodes: Review | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1715,7 +1629,6 @@ export type Review = {
   mediaType: MediaType | null;
   summary: String | null;
   body: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -1747,8 +1660,8 @@ export enum RecommendationSort {
 }
 
 export type RecommendationConnection = {
-  edges: RecommendationEdge[] | null;
-  nodes: Recommendation[] | null;
+  edges: RecommendationEdge | null[] | null;
+  nodes: Recommendation | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1772,9 +1685,9 @@ export enum RecommendationRating {
 }
 
 export type MediaStats = {
-  scoreDistribution: ScoreDistribution[] | null;
-  statusDistribution: StatusDistribution[] | null;
-  airingProgression: AiringProgression[] | null;
+  scoreDistribution: ScoreDistribution | null[] | null;
+  statusDistribution: StatusDistribution | null[] | null;
+  airingProgression: AiringProgression | null[] | null;
 };
 
 export type ScoreDistribution = {
@@ -1823,100 +1736,88 @@ export type UserStatistics = {
   chaptersRead: Int;
   volumesRead: Int;
   formats: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserFormatStatistic[] | null
+    UserFormatStatistic | null[] | null
   ];
   statuses: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserStatusStatistic[] | null
+    UserStatusStatistic | null[] | null
   ];
   scores: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserScoreStatistic[] | null
+    UserScoreStatistic | null[] | null
   ];
   lengths: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserLengthStatistic[] | null
+    UserLengthStatistic | null[] | null
   ];
   releaseYears: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserReleaseYearStatistic[] | null
+    UserReleaseYearStatistic | null[] | null
   ];
   startYears: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserStartYearStatistic[] | null
+    UserStartYearStatistic | null[] | null
   ];
   genres: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserGenreStatistic[] | null
+    UserGenreStatistic | null[] | null
   ];
   tags: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserTagStatistic[] | null
+    UserTagStatistic | null[] | null
   ];
   countries: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserCountryStatistic[] | null
+    UserCountryStatistic | null[] | null
   ];
   voiceActors: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserVoiceActorStatistic[] | null
+    UserVoiceActorStatistic | null[] | null
   ];
   staff: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserStaffStatistic[] | null
+    UserStaffStatistic | null[] | null
   ];
   studios: [
-    "__Field",
     {
       limit: Int | null;
-      sort: UserStatisticsSort[] | null;
+      sort: UserStatisticsSort | null[] | null;
     },
-    UserStudioStatistic[] | null
+    UserStudioStatistic | null[] | null
   ];
 };
 
@@ -1936,7 +1837,7 @@ export type UserFormatStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   format: MediaFormat | null;
 };
 
@@ -1945,7 +1846,7 @@ export type UserStatusStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   status: MediaListStatus | null;
 };
 
@@ -1954,7 +1855,7 @@ export type UserScoreStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   score: Int | null;
 };
 
@@ -1963,7 +1864,7 @@ export type UserLengthStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   length: String | null;
 };
 
@@ -1972,7 +1873,7 @@ export type UserReleaseYearStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   releaseYear: Int | null;
 };
 
@@ -1981,7 +1882,7 @@ export type UserStartYearStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   startYear: Int | null;
 };
 
@@ -1990,7 +1891,7 @@ export type UserGenreStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   genre: String | null;
 };
 
@@ -1999,7 +1900,7 @@ export type UserTagStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   tag: MediaTag | null;
 };
 
@@ -2008,7 +1909,7 @@ export type UserCountryStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   country: CountryCode | null;
 };
 
@@ -2017,9 +1918,9 @@ export type UserVoiceActorStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   voiceActor: Staff | null;
-  characterIds: Int[];
+  characterIds: Int | null[];
 };
 
 export type UserStaffStatistic = {
@@ -2027,7 +1928,7 @@ export type UserStaffStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   staff: Staff | null;
 };
 
@@ -2036,7 +1937,7 @@ export type UserStudioStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int[];
+  mediaIds: Int | null[];
   studio: Studio | null;
 };
 
@@ -2061,21 +1962,21 @@ export enum ModRole {
 export type UserStats = {
   watchedTime: Int | null;
   chaptersRead: Int | null;
-  activityHistory: UserActivityHistory[] | null;
-  animeStatusDistribution: StatusDistribution[] | null;
-  mangaStatusDistribution: StatusDistribution[] | null;
-  animeScoreDistribution: ScoreDistribution[] | null;
-  mangaScoreDistribution: ScoreDistribution[] | null;
+  activityHistory: UserActivityHistory | null[] | null;
+  animeStatusDistribution: StatusDistribution | null[] | null;
+  mangaStatusDistribution: StatusDistribution | null[] | null;
+  animeScoreDistribution: ScoreDistribution | null[] | null;
+  mangaScoreDistribution: ScoreDistribution | null[] | null;
   animeListScores: ListScoreStats | null;
   mangaListScores: ListScoreStats | null;
-  favouredGenresOverview: GenreStats[] | null;
-  favouredGenres: GenreStats[] | null;
-  favouredTags: TagStats[] | null;
-  favouredActors: StaffStats[] | null;
-  favouredStaff: StaffStats[] | null;
-  favouredStudios: StudioStats[] | null;
-  favouredYears: YearStats[] | null;
-  favouredFormats: FormatStats[] | null;
+  favouredGenresOverview: GenreStats | null[] | null;
+  favouredGenres: GenreStats | null[] | null;
+  favouredTags: TagStats | null[] | null;
+  favouredActors: StaffStats | null[] | null;
+  favouredStaff: StaffStats | null[] | null;
+  favouredStudios: StudioStats | null[] | null;
+  favouredYears: YearStats | null[] | null;
+  favouredFormats: FormatStats | null[] | null;
 };
 
 export type UserActivityHistory = {
@@ -2204,7 +2105,7 @@ export type AiringNotification = {
   type: NotificationType | null;
   animeId: Int;
   episode: Int;
-  contexts: String[] | null;
+  contexts: String | null[] | null;
   createdAt: Int | null;
   media: Media | null;
 };
@@ -2236,7 +2137,6 @@ export type MessageActivity = {
   type: ActivityType | null;
   replyCount: Int;
   message: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -2251,8 +2151,8 @@ export type MessageActivity = {
   createdAt: Int;
   recipient: User | null;
   messenger: User | null;
-  replies: ActivityReply[] | null;
-  likes: User[] | null;
+  replies: ActivityReply | null[] | null;
+  likes: User | null[] | null;
 };
 
 export enum ActivityType {
@@ -2268,7 +2168,6 @@ export type ActivityReply = {
   userId: Int | null;
   activityId: Int | null;
   text: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -2278,7 +2177,7 @@ export type ActivityReply = {
   isLiked: Boolean | null;
   createdAt: Int;
   user: User | null;
-  likes: User[] | null;
+  likes: User | null[] | null;
 };
 
 export type ActivityMentionNotification = {
@@ -2288,7 +2187,7 @@ export type ActivityMentionNotification = {
   activityId: Int;
   context: String | null;
   createdAt: Int | null;
-  activity: ActivityUnion | null;
+  activity: ActivityUnion;
   user: User | null;
 };
 
@@ -2300,7 +2199,6 @@ export type TextActivity = {
   type: ActivityType | null;
   replyCount: Int;
   text: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -2314,8 +2212,8 @@ export type TextActivity = {
   isPinned: Boolean | null;
   createdAt: Int;
   user: User | null;
-  replies: ActivityReply[] | null;
-  likes: User[] | null;
+  replies: ActivityReply | null[] | null;
+  likes: User | null[] | null;
 };
 
 export type ListActivity = {
@@ -2334,8 +2232,8 @@ export type ListActivity = {
   createdAt: Int;
   user: User | null;
   media: Media | null;
-  replies: ActivityReply[] | null;
-  likes: User[] | null;
+  replies: ActivityReply | null[] | null;
+  likes: User | null[] | null;
 };
 
 export type ActivityReplyNotification = {
@@ -2345,7 +2243,7 @@ export type ActivityReplyNotification = {
   activityId: Int;
   context: String | null;
   createdAt: Int | null;
-  activity: ActivityUnion | null;
+  activity: ActivityUnion;
   user: User | null;
 };
 
@@ -2356,7 +2254,7 @@ export type ActivityReplySubscribedNotification = {
   activityId: Int;
   context: String | null;
   createdAt: Int | null;
-  activity: ActivityUnion | null;
+  activity: ActivityUnion;
   user: User | null;
 };
 
@@ -2367,7 +2265,7 @@ export type ActivityLikeNotification = {
   activityId: Int;
   context: String | null;
   createdAt: Int | null;
-  activity: ActivityUnion | null;
+  activity: ActivityUnion;
   user: User | null;
 };
 
@@ -2378,7 +2276,7 @@ export type ActivityReplyLikeNotification = {
   activityId: Int;
   context: String | null;
   createdAt: Int | null;
-  activity: ActivityUnion | null;
+  activity: ActivityUnion;
   user: User | null;
 };
 
@@ -2398,7 +2296,6 @@ export type Thread = {
   id: Int;
   title: String | null;
   body: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -2419,10 +2316,10 @@ export type Thread = {
   updatedAt: Int;
   user: User | null;
   replyUser: User | null;
-  likes: User[] | null;
+  likes: User | null[] | null;
   siteUrl: String | null;
-  categories: ThreadCategory[] | null;
-  mediaCategories: Media[] | null;
+  categories: ThreadCategory | null[] | null;
+  mediaCategories: Media | null[] | null;
 };
 
 export type ThreadCategory = {
@@ -2435,7 +2332,6 @@ export type ThreadComment = {
   userId: Int | null;
   threadId: Int | null;
   comment: [
-    "__Field",
     {
       asHtml: Boolean | null;
     },
@@ -2448,7 +2344,7 @@ export type ThreadComment = {
   updatedAt: Int;
   thread: Thread | null;
   user: User | null;
-  likes: User[] | null;
+  likes: User | null[] | null;
   childComments: Json | null;
   isLocked: Boolean | null;
 };
@@ -2524,7 +2420,7 @@ export type MediaMergeNotification = {
   id: Int;
   type: NotificationType | null;
   mediaId: Int;
-  deletedMediaTitles: String[] | null;
+  deletedMediaTitles: String | null[] | null;
   context: String | null;
   reason: String | null;
   createdAt: Int | null;
@@ -2578,27 +2474,25 @@ export enum LikeableType {
 }
 
 export type MediaListCollection = {
-  lists: MediaListGroup[] | null;
+  lists: MediaListGroup | null[] | null;
   user: User | null;
   hasNextChunk: Boolean | null;
   statusLists: [
-    "__Field",
     {
       asArray: Boolean | null;
     },
-    MediaList[][] | null
+    MediaList | null[] | null[] | null
   ];
   customLists: [
-    "__Field",
     {
       asArray: Boolean | null;
     },
-    MediaList[][] | null
+    MediaList | null[] | null[] | null
   ];
 };
 
 export type MediaListGroup = {
-  entries: MediaList[] | null;
+  entries: MediaList | null[] | null;
   name: String | null;
   isCustomList: Boolean | null;
   isSplitCompletedList: Boolean | null;
@@ -2617,63 +2511,56 @@ export type AniChartUser = {
 
 export type SiteStatistics = {
   users: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     SiteTrendConnection | null
   ];
   anime: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     SiteTrendConnection | null
   ];
   manga: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     SiteTrendConnection | null
   ];
   characters: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     SiteTrendConnection | null
   ];
   staff: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     SiteTrendConnection | null
   ];
   studios: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
     SiteTrendConnection | null
   ];
   reviews: [
-    "__Field",
     {
-      sort: SiteTrendSort[] | null;
+      sort: SiteTrendSort | null[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2691,8 +2578,8 @@ export enum SiteTrendSort {
 }
 
 export type SiteTrendConnection = {
-  edges: SiteTrendEdge[] | null;
-  nodes: SiteTrend[] | null;
+  edges: SiteTrendEdge | null[] | null;
+  nodes: SiteTrend | null[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -2714,7 +2601,6 @@ export enum ExternalLinkMediaType {
 
 export type Mutation = {
   UpdateUser: [
-    "__Field",
     {
       about: String | null;
       titleLanguage: UserTitleLanguage | null;
@@ -2724,19 +2610,18 @@ export type Mutation = {
       rowOrder: String | null;
       profileColor: String | null;
       donatorBadge: String | null;
-      notificationOptions: NotificationOptionInput[] | null;
+      notificationOptions: NotificationOptionInput | null[] | null;
       timezone: String | null;
       activityMergeTime: Int | null;
       animeListOptions: MediaListOptionsInput | null;
       mangaListOptions: MediaListOptionsInput | null;
       staffNameLanguage: UserStaffNameLanguage | null;
       restrictMessagesToFollowing: Boolean | null;
-      disabledListActivity: ListActivityOptionInput[] | null;
+      disabledListActivity: ListActivityOptionInput | null[] | null;
     },
     User | null
   ];
   SaveMediaListEntry: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -2750,15 +2635,14 @@ export type Mutation = {
       private: Boolean | null;
       notes: String | null;
       hiddenFromStatusLists: Boolean | null;
-      customLists: String[] | null;
-      advancedScores: Float[] | null;
+      customLists: String | null[] | null;
+      advancedScores: Float | null[] | null;
       startedAt: FuzzyDateInput | null;
       completedAt: FuzzyDateInput | null;
     },
     MediaList | null
   ];
   UpdateMediaListEntries: [
-    "__Field",
     {
       status: MediaListStatus | null;
       score: Float | null;
@@ -2770,22 +2654,20 @@ export type Mutation = {
       private: Boolean | null;
       notes: String | null;
       hiddenFromStatusLists: Boolean | null;
-      advancedScores: Float[] | null;
+      advancedScores: Float | null[] | null;
       startedAt: FuzzyDateInput | null;
       completedAt: FuzzyDateInput | null;
-      ids: Int[] | null;
+      ids: Int | null[] | null;
     },
-    MediaList[] | null
+    MediaList | null[] | null
   ];
   DeleteMediaListEntry: [
-    "__Field",
     {
       id: Int | null;
     },
     Deleted | null
   ];
   DeleteCustomList: [
-    "__Field",
     {
       customList: String | null;
       type: MediaType | null;
@@ -2793,7 +2675,6 @@ export type Mutation = {
     Deleted | null
   ];
   SaveTextActivity: [
-    "__Field",
     {
       id: Int | null;
       text: String | null;
@@ -2802,7 +2683,6 @@ export type Mutation = {
     TextActivity | null
   ];
   SaveMessageActivity: [
-    "__Field",
     {
       id: Int | null;
       message: String | null;
@@ -2814,7 +2694,6 @@ export type Mutation = {
     MessageActivity | null
   ];
   SaveListActivity: [
-    "__Field",
     {
       id: Int | null;
       locked: Boolean | null;
@@ -2822,30 +2701,26 @@ export type Mutation = {
     ListActivity | null
   ];
   DeleteActivity: [
-    "__Field",
     {
       id: Int | null;
     },
     Deleted | null
   ];
   ToggleActivityPin: [
-    "__Field",
     {
       id: Int | null;
       pinned: Boolean | null;
     },
-    ActivityUnion | null
+    ActivityUnion
   ];
   ToggleActivitySubscription: [
-    "__Field",
     {
       activityId: Int | null;
       subscribe: Boolean | null;
     },
-    ActivityUnion | null
+    ActivityUnion
   ];
   SaveActivityReply: [
-    "__Field",
     {
       id: Int | null;
       activityId: Int | null;
@@ -2855,37 +2730,32 @@ export type Mutation = {
     ActivityReply | null
   ];
   DeleteActivityReply: [
-    "__Field",
     {
       id: Int | null;
     },
     Deleted | null
   ];
   ToggleLike: [
-    "__Field",
     {
       id: Int | null;
       type: LikeableType | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   ToggleLikeV2: [
-    "__Field",
     {
       id: Int | null;
       type: LikeableType | null;
     },
-    LikeableUnion | null
+    LikeableUnion
   ];
   ToggleFollow: [
-    "__Field",
     {
       userId: Int | null;
     },
     User | null
   ];
   ToggleFavourite: [
-    "__Field",
     {
       animeId: Int | null;
       mangaId: Int | null;
@@ -2896,23 +2766,21 @@ export type Mutation = {
     Favourites | null
   ];
   UpdateFavouriteOrder: [
-    "__Field",
     {
-      animeIds: Int[] | null;
-      mangaIds: Int[] | null;
-      characterIds: Int[] | null;
-      staffIds: Int[] | null;
-      studioIds: Int[] | null;
-      animeOrder: Int[] | null;
-      mangaOrder: Int[] | null;
-      characterOrder: Int[] | null;
-      staffOrder: Int[] | null;
-      studioOrder: Int[] | null;
+      animeIds: Int | null[] | null;
+      mangaIds: Int | null[] | null;
+      characterIds: Int | null[] | null;
+      staffIds: Int | null[] | null;
+      studioIds: Int | null[] | null;
+      animeOrder: Int | null[] | null;
+      mangaOrder: Int | null[] | null;
+      characterOrder: Int | null[] | null;
+      staffOrder: Int | null[] | null;
+      studioOrder: Int | null[] | null;
     },
     Favourites | null
   ];
   SaveReview: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -2924,14 +2792,12 @@ export type Mutation = {
     Review | null
   ];
   DeleteReview: [
-    "__Field",
     {
       id: Int | null;
     },
     Deleted | null
   ];
   RateReview: [
-    "__Field",
     {
       reviewId: Int | null;
       rating: ReviewRating | null;
@@ -2939,7 +2805,6 @@ export type Mutation = {
     Review | null
   ];
   SaveRecommendation: [
-    "__Field",
     {
       mediaId: Int | null;
       mediaRecommendationId: Int | null;
@@ -2948,27 +2813,24 @@ export type Mutation = {
     Recommendation | null
   ];
   SaveThread: [
-    "__Field",
     {
       id: Int | null;
       title: String | null;
       body: String | null;
-      categories: Int[] | null;
-      mediaCategories: Int[] | null;
+      categories: Int | null[] | null;
+      mediaCategories: Int | null[] | null;
       sticky: Boolean | null;
       locked: Boolean | null;
     },
     Thread | null
   ];
   DeleteThread: [
-    "__Field",
     {
       id: Int | null;
     },
     Deleted | null
   ];
   ToggleThreadSubscription: [
-    "__Field",
     {
       threadId: Int | null;
       subscribe: Boolean | null;
@@ -2976,7 +2838,6 @@ export type Mutation = {
     Thread | null
   ];
   SaveThreadComment: [
-    "__Field",
     {
       id: Int | null;
       threadId: Int | null;
@@ -2987,14 +2848,12 @@ export type Mutation = {
     ThreadComment | null
   ];
   DeleteThreadComment: [
-    "__Field",
     {
       id: Int | null;
     },
     Deleted | null
   ];
   UpdateAniChartSettings: [
-    "__Field",
     {
       titleLanguage: String | null;
       outgoingLinkProvider: String | null;
@@ -3004,9 +2863,8 @@ export type Mutation = {
     Json | null
   ];
   UpdateAniChartHighlights: [
-    "__Field",
     {
-      highlights: AniChartHighlightInput[] | null;
+      highlights: AniChartHighlightInput | null[] | null;
     },
     Json | null
   ];
@@ -3018,10 +2876,10 @@ export type NotificationOptionInput = {
 };
 
 export type MediaListOptionsInput = {
-  sectionOrder: String[] | null;
+  sectionOrder: String | null[] | null;
   splitCompletedSectionByFormat: Boolean | null;
-  customLists: String[] | null;
-  advancedScoring: String[] | null;
+  customLists: String | null[] | null;
+  advancedScoring: String | null[] | null;
   advancedScoringEnabled: Boolean | null;
   theme: String | null;
 };
@@ -3056,7 +2914,6 @@ export type AniChartHighlightInput = {
 
 export type InternalPage = {
   mediaSubmissions: [
-    "__Field",
     {
       mediaId: Int | null;
       submissionId: Int | null;
@@ -3064,34 +2921,31 @@ export type InternalPage = {
       assigneeId: Int | null;
       status: SubmissionStatus | null;
       type: MediaType | null;
-      sort: SubmissionSort[] | null;
+      sort: SubmissionSort | null[] | null;
     },
-    MediaSubmission[] | null
+    MediaSubmission | null[] | null
   ];
   characterSubmissions: [
-    "__Field",
     {
       characterId: Int | null;
       userId: Int | null;
       assigneeId: Int | null;
       status: SubmissionStatus | null;
-      sort: SubmissionSort[] | null;
+      sort: SubmissionSort | null[] | null;
     },
-    CharacterSubmission[] | null
+    CharacterSubmission | null[] | null
   ];
   staffSubmissions: [
-    "__Field",
     {
       staffId: Int | null;
       userId: Int | null;
       assigneeId: Int | null;
       status: SubmissionStatus | null;
-      sort: SubmissionSort[] | null;
+      sort: SubmissionSort | null[] | null;
     },
-    StaffSubmission[] | null
+    StaffSubmission | null[] | null
   ];
   revisionHistory: [
-    "__Field",
     {
       userId: Int | null;
       mediaId: Int | null;
@@ -3099,45 +2953,40 @@ export type InternalPage = {
       staffId: Int | null;
       studioId: Int | null;
     },
-    RevisionHistory[] | null
+    RevisionHistory | null[] | null
   ];
   reports: [
-    "__Field",
     {
       reporterId: Int | null;
       reportedId: Int | null;
     },
-    Report[] | null
+    Report | null[] | null
   ];
   modActions: [
-    "__Field",
     {
       userId: Int | null;
       modId: Int | null;
     },
-    ModAction[] | null
+    ModAction | null[] | null
   ];
   userBlockSearch: [
-    "__Field",
     {
       search: String | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   pageInfo: PageInfo | null;
   users: [
-    "__Field",
     {
       id: Int | null;
       name: String | null;
       isModerator: Boolean | null;
       search: String | null;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   media: [
-    "__Field",
     {
       id: Int | null;
       idMal: Int | null;
@@ -3167,23 +3016,23 @@ export type InternalPage = {
       isLicensed: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       idMal_not: Int | null;
-      idMal_in: Int[] | null;
-      idMal_not_in: Int[] | null;
+      idMal_in: Int | null[] | null;
+      idMal_not_in: Int | null[] | null;
       startDate_greater: FuzzyDateInt | null;
       startDate_lesser: FuzzyDateInt | null;
       startDate_like: String | null;
       endDate_greater: FuzzyDateInt | null;
       endDate_lesser: FuzzyDateInt | null;
       endDate_like: String | null;
-      format_in: MediaFormat[] | null;
+      format_in: MediaFormat | null[] | null;
       format_not: MediaFormat | null;
-      format_not_in: MediaFormat[] | null;
-      status_in: MediaStatus[] | null;
+      format_not_in: MediaFormat | null[] | null;
+      status_in: MediaStatus | null[] | null;
       status_not: MediaStatus | null;
-      status_not_in: MediaStatus[] | null;
+      status_not_in: MediaStatus | null[] | null;
       episodes_greater: Int | null;
       episodes_lesser: Int | null;
       duration_greater: Int | null;
@@ -3192,65 +3041,61 @@ export type InternalPage = {
       chapters_lesser: Int | null;
       volumes_greater: Int | null;
       volumes_lesser: Int | null;
-      genre_in: String[] | null;
-      genre_not_in: String[] | null;
-      tag_in: String[] | null;
-      tag_not_in: String[] | null;
-      tagCategory_in: String[] | null;
-      tagCategory_not_in: String[] | null;
-      licensedBy_in: String[] | null;
-      licensedById_in: Int[] | null;
+      genre_in: String | null[] | null;
+      genre_not_in: String | null[] | null;
+      tag_in: String | null[] | null;
+      tag_not_in: String | null[] | null;
+      tagCategory_in: String | null[] | null;
+      tagCategory_not_in: String | null[] | null;
+      licensedBy_in: String | null[] | null;
+      licensedById_in: Int | null[] | null;
       averageScore_not: Int | null;
       averageScore_greater: Int | null;
       averageScore_lesser: Int | null;
       popularity_not: Int | null;
       popularity_greater: Int | null;
       popularity_lesser: Int | null;
-      source_in: MediaSource[] | null;
-      sort: MediaSort[] | null;
+      source_in: MediaSource | null[] | null;
+      sort: MediaSort | null[] | null;
     },
-    Media[] | null
+    Media | null[] | null
   ];
   characters: [
-    "__Field",
     {
       id: Int | null;
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: CharacterSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: CharacterSort | null[] | null;
     },
-    Character[] | null
+    Character | null[] | null
   ];
   staff: [
-    "__Field",
     {
       id: Int | null;
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: StaffSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: StaffSort | null[] | null;
     },
-    Staff[] | null
+    Staff | null[] | null
   ];
   studios: [
-    "__Field",
     {
       id: Int | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
-      sort: StudioSort[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
+      sort: StudioSort | null[] | null;
     },
-    Studio[] | null
+    Studio | null[] | null
   ];
   mediaList: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -3263,12 +3108,12 @@ export type InternalPage = {
       startedAt: FuzzyDateInt | null;
       completedAt: FuzzyDateInt | null;
       compareWithAuthList: Boolean | null;
-      userId_in: Int[] | null;
-      status_in: MediaListStatus[] | null;
-      status_not_in: MediaListStatus[] | null;
+      userId_in: Int | null[] | null;
+      status_in: MediaListStatus | null[] | null;
+      status_not_in: MediaListStatus | null[] | null;
       status_not: MediaListStatus | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
       startedAt_lesser: FuzzyDateInt | null;
@@ -3276,12 +3121,11 @@ export type InternalPage = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort[] | null;
+      sort: MediaListSort | null[] | null;
     },
-    MediaList[] | null
+    MediaList | null[] | null
   ];
   airingSchedules: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -3289,24 +3133,23 @@ export type InternalPage = {
       airingAt: Int | null;
       notYetAired: Boolean | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       episode_not: Int | null;
-      episode_in: Int[] | null;
-      episode_not_in: Int[] | null;
+      episode_in: Int | null[] | null;
+      episode_not_in: Int | null[] | null;
       episode_greater: Int | null;
       episode_lesser: Int | null;
       airingAt_greater: Int | null;
       airingAt_lesser: Int | null;
-      sort: AiringSort[] | null;
+      sort: AiringSort | null[] | null;
     },
-    AiringSchedule[] | null
+    AiringSchedule | null[] | null
   ];
   mediaTrends: [
-    "__Field",
     {
       mediaId: Int | null;
       date: Int | null;
@@ -3316,8 +3159,8 @@ export type InternalPage = {
       episode: Int | null;
       releasing: Boolean | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       date_greater: Int | null;
       date_lesser: Int | null;
       trending_greater: Int | null;
@@ -3332,37 +3175,33 @@ export type InternalPage = {
       episode_greater: Int | null;
       episode_lesser: Int | null;
       episode_not: Int | null;
-      sort: MediaTrendSort[] | null;
+      sort: MediaTrendSort | null[] | null;
     },
-    MediaTrend[] | null
+    MediaTrend | null[] | null
   ];
   notifications: [
-    "__Field",
     {
       type: NotificationType | null;
       resetNotificationCount: Boolean | null;
-      type_in: NotificationType[] | null;
+      type_in: NotificationType | null[] | null;
     },
     NotificationUnion[] | null
   ];
   followers: [
-    "__Field",
     {
       userId: Int;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   following: [
-    "__Field",
     {
       userId: Int;
-      sort: UserSort[] | null;
+      sort: UserSort | null[] | null;
     },
-    User[] | null
+    User | null[] | null
   ];
   activities: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -3374,36 +3213,34 @@ export type InternalPage = {
       hasRepliesOrTypeText: Boolean | null;
       createdAt: Int | null;
       id_not: Int | null;
-      id_in: Int[] | null;
-      id_not_in: Int[] | null;
+      id_in: Int | null[] | null;
+      id_not_in: Int | null[] | null;
       userId_not: Int | null;
-      userId_in: Int[] | null;
-      userId_not_in: Int[] | null;
+      userId_in: Int | null[] | null;
+      userId_not_in: Int | null[] | null;
       messengerId_not: Int | null;
-      messengerId_in: Int[] | null;
-      messengerId_not_in: Int[] | null;
+      messengerId_in: Int | null[] | null;
+      messengerId_not_in: Int | null[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int[] | null;
-      mediaId_not_in: Int[] | null;
+      mediaId_in: Int | null[] | null;
+      mediaId_not_in: Int | null[] | null;
       type_not: ActivityType | null;
-      type_in: ActivityType[] | null;
-      type_not_in: ActivityType[] | null;
+      type_in: ActivityType | null[] | null;
+      type_not_in: ActivityType | null[] | null;
       createdAt_greater: Int | null;
       createdAt_lesser: Int | null;
-      sort: ActivitySort[] | null;
+      sort: ActivitySort | null[] | null;
     },
     ActivityUnion[] | null
   ];
   activityReplies: [
-    "__Field",
     {
       id: Int | null;
       activityId: Int | null;
     },
-    ActivityReply[] | null
+    ActivityReply | null[] | null
   ];
   threads: [
-    "__Field",
     {
       id: Int | null;
       userId: Int | null;
@@ -3412,34 +3249,31 @@ export type InternalPage = {
       categoryId: Int | null;
       mediaCategoryId: Int | null;
       search: String | null;
-      id_in: Int[] | null;
-      sort: ThreadSort[] | null;
+      id_in: Int | null[] | null;
+      sort: ThreadSort | null[] | null;
     },
-    Thread[] | null
+    Thread | null[] | null
   ];
   threadComments: [
-    "__Field",
     {
       id: Int | null;
       threadId: Int | null;
       userId: Int | null;
-      sort: ThreadCommentSort[] | null;
+      sort: ThreadCommentSort | null[] | null;
     },
-    ThreadComment[] | null
+    ThreadComment | null[] | null
   ];
   reviews: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
       userId: Int | null;
       mediaType: MediaType | null;
-      sort: ReviewSort[] | null;
+      sort: ReviewSort | null[] | null;
     },
-    Review[] | null
+    Review | null[] | null
   ];
   recommendations: [
-    "__Field",
     {
       id: Int | null;
       mediaId: Int | null;
@@ -3449,17 +3283,16 @@ export type InternalPage = {
       onList: Boolean | null;
       rating_greater: Int | null;
       rating_lesser: Int | null;
-      sort: RecommendationSort[] | null;
+      sort: RecommendationSort | null[] | null;
     },
-    Recommendation[] | null
+    Recommendation | null[] | null
   ];
   likes: [
-    "__Field",
     {
       likeableId: Int | null;
       type: LikeableType | null;
     },
-    User[] | null
+    User | null[] | null
   ];
 };
 
@@ -3483,15 +3316,15 @@ export type MediaSubmission = {
   submitterStats: Json | null;
   notes: String | null;
   source: String | null;
-  changes: String[] | null;
+  changes: String | null[] | null;
   locked: Boolean | null;
   media: Media | null;
   submission: Media | null;
-  characters: MediaSubmissionComparison[] | null;
-  staff: MediaSubmissionComparison[] | null;
-  studios: MediaSubmissionComparison[] | null;
-  relations: MediaEdge[] | null;
-  externalLinks: MediaSubmissionComparison[] | null;
+  characters: MediaSubmissionComparison | null[] | null;
+  staff: MediaSubmissionComparison | null[] | null;
+  studios: MediaSubmissionComparison | null[] | null;
+  relations: MediaEdge | null[] | null;
+  externalLinks: MediaSubmissionComparison | null[] | null;
   createdAt: Int | null;
 };
 
@@ -3630,21 +3463,21 @@ export type CharacterNameInput = {
   middle: String | null;
   last: String | null;
   native: String | null;
-  alternative: String[] | null;
-  alternativeSpoiler: String[] | null;
+  alternative: String | null[] | null;
+  alternativeSpoiler: String | null[] | null;
 };
 
 export type CharacterSubmissionConnection = {
-  edges: CharacterSubmissionEdge[] | null;
-  nodes: CharacterSubmission[] | null;
+  edges: CharacterSubmissionEdge | null[] | null;
+  nodes: CharacterSubmission | null[] | null;
   pageInfo: PageInfo | null;
 };
 
 export type CharacterSubmissionEdge = {
   node: CharacterSubmission | null;
   role: CharacterRole | null;
-  voiceActors: Staff[] | null;
-  submittedVoiceActors: StaffSubmission[] | null;
+  voiceActors: Staff | null[] | null;
+  submittedVoiceActors: StaffSubmission | null[] | null;
 };
 
 export type StaffNameInput = {
@@ -3652,11 +3485,11 @@ export type StaffNameInput = {
   middle: String | null;
   last: String | null;
   native: String | null;
-  alternative: String[] | null;
+  alternative: String | null[] | null;
 };
 
 export type UserModData = {
-  alts: User[] | null;
+  alts: User | null[] | null;
   bans: Json | null;
   ip: Json | null;
   counts: Json | null;
@@ -3669,7 +3502,6 @@ export type ID = string;
 export const schema = {
   Query: {
     Page: [
-      "__Field",
       {
         page: "Int",
         perPage: "Int",
@@ -3677,7 +3509,6 @@ export const schema = {
       "Page",
     ],
     Media: [
-      "__Field",
       {
         id: "Int",
         idMal: "Int",
@@ -3752,7 +3583,6 @@ export const schema = {
       "Media",
     ],
     MediaTrend: [
-      "__Field",
       {
         mediaId: "Int",
         date: "Int",
@@ -3783,7 +3613,6 @@ export const schema = {
       "MediaTrend",
     ],
     AiringSchedule: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -3808,7 +3637,6 @@ export const schema = {
       "AiringSchedule",
     ],
     Character: [
-      "__Field",
       {
         id: "Int",
         isBirthday: "Boolean",
@@ -3821,7 +3649,6 @@ export const schema = {
       "Character",
     ],
     Staff: [
-      "__Field",
       {
         id: "Int",
         isBirthday: "Boolean",
@@ -3834,7 +3661,6 @@ export const schema = {
       "Staff",
     ],
     MediaList: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -3865,7 +3691,6 @@ export const schema = {
       "MediaList",
     ],
     MediaListCollection: [
-      "__Field",
       {
         userId: "Int",
         userName: "String",
@@ -3893,14 +3718,12 @@ export const schema = {
     ],
     GenreCollection: ["String"],
     MediaTagCollection: [
-      "__Field",
       {
         status: "Int",
       },
       ["MediaTag"],
     ],
     User: [
-      "__Field",
       {
         id: "Int",
         name: "String",
@@ -3912,7 +3735,6 @@ export const schema = {
     ],
     Viewer: "User",
     Notification: [
-      "__Field",
       {
         type: "NotificationType",
         resetNotificationCount: "Boolean",
@@ -3921,7 +3743,6 @@ export const schema = {
       "NotificationUnion",
     ],
     Studio: [
-      "__Field",
       {
         id: "Int",
         search: "String",
@@ -3933,7 +3754,6 @@ export const schema = {
       "Studio",
     ],
     Review: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -3944,7 +3764,6 @@ export const schema = {
       "Review",
     ],
     Activity: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -3977,7 +3796,6 @@ export const schema = {
       "ActivityUnion",
     ],
     ActivityReply: [
-      "__Field",
       {
         id: "Int",
         activityId: "Int",
@@ -3985,7 +3803,6 @@ export const schema = {
       "ActivityReply",
     ],
     Following: [
-      "__Field",
       {
         userId: "Int!",
         sort: ["UserSort"],
@@ -3993,7 +3810,6 @@ export const schema = {
       "User",
     ],
     Follower: [
-      "__Field",
       {
         userId: "Int!",
         sort: ["UserSort"],
@@ -4001,7 +3817,6 @@ export const schema = {
       "User",
     ],
     Thread: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -4016,7 +3831,6 @@ export const schema = {
       "Thread",
     ],
     ThreadComment: [
-      "__Field",
       {
         id: "Int",
         threadId: "Int",
@@ -4026,7 +3840,6 @@ export const schema = {
       ["ThreadComment"],
     ],
     Recommendation: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -4041,7 +3854,6 @@ export const schema = {
       "Recommendation",
     ],
     Like: [
-      "__Field",
       {
         likeableId: "Int",
         type: "LikeableType",
@@ -4049,7 +3861,6 @@ export const schema = {
       "User",
     ],
     Markdown: [
-      "__Field",
       {
         markdown: "String!",
       },
@@ -4058,7 +3869,6 @@ export const schema = {
     AniChartUser: "AniChartUser",
     SiteStatistics: "SiteStatistics",
     ExternalLinkSourceCollection: [
-      "__Field",
       {
         id: "Int",
         type: "ExternalLinkType",
@@ -4071,7 +3881,6 @@ export const schema = {
   Page: {
     pageInfo: "PageInfo",
     users: [
-      "__Field",
       {
         id: "Int",
         name: "String",
@@ -4082,7 +3891,6 @@ export const schema = {
       ["User"],
     ],
     media: [
-      "__Field",
       {
         id: "Int",
         idMal: "Int",
@@ -4157,7 +3965,6 @@ export const schema = {
       ["Media"],
     ],
     characters: [
-      "__Field",
       {
         id: "Int",
         isBirthday: "Boolean",
@@ -4170,7 +3977,6 @@ export const schema = {
       ["Character"],
     ],
     staff: [
-      "__Field",
       {
         id: "Int",
         isBirthday: "Boolean",
@@ -4183,7 +3989,6 @@ export const schema = {
       ["Staff"],
     ],
     studios: [
-      "__Field",
       {
         id: "Int",
         search: "String",
@@ -4195,7 +4000,6 @@ export const schema = {
       ["Studio"],
     ],
     mediaList: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -4226,7 +4030,6 @@ export const schema = {
       ["MediaList"],
     ],
     airingSchedules: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -4251,7 +4054,6 @@ export const schema = {
       ["AiringSchedule"],
     ],
     mediaTrends: [
-      "__Field",
       {
         mediaId: "Int",
         date: "Int",
@@ -4282,7 +4084,6 @@ export const schema = {
       ["MediaTrend"],
     ],
     notifications: [
-      "__Field",
       {
         type: "NotificationType",
         resetNotificationCount: "Boolean",
@@ -4291,7 +4092,6 @@ export const schema = {
       ["NotificationUnion"],
     ],
     followers: [
-      "__Field",
       {
         userId: "Int!",
         sort: ["UserSort"],
@@ -4299,7 +4099,6 @@ export const schema = {
       ["User"],
     ],
     following: [
-      "__Field",
       {
         userId: "Int!",
         sort: ["UserSort"],
@@ -4307,7 +4106,6 @@ export const schema = {
       ["User"],
     ],
     activities: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -4340,7 +4138,6 @@ export const schema = {
       ["ActivityUnion"],
     ],
     activityReplies: [
-      "__Field",
       {
         id: "Int",
         activityId: "Int",
@@ -4348,7 +4145,6 @@ export const schema = {
       ["ActivityReply"],
     ],
     threads: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -4363,7 +4159,6 @@ export const schema = {
       ["Thread"],
     ],
     threadComments: [
-      "__Field",
       {
         id: "Int",
         threadId: "Int",
@@ -4373,7 +4168,6 @@ export const schema = {
       ["ThreadComment"],
     ],
     reviews: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -4384,7 +4178,6 @@ export const schema = {
       ["Review"],
     ],
     recommendations: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -4399,7 +4192,6 @@ export const schema = {
       ["Recommendation"],
     ],
     likes: [
-      "__Field",
       {
         likeableId: "Int",
         type: "LikeableType",
@@ -4431,7 +4223,6 @@ export const schema = {
     id: "Int!",
     name: "String!",
     about: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -4446,7 +4237,6 @@ export const schema = {
     options: "UserOptions",
     mediaListOptions: "MediaListOptions",
     favourites: [
-      "__Field",
       {
         page: "Int",
       },
@@ -4555,7 +4345,6 @@ export const schema = {
   },
   Favourites: {
     anime: [
-      "__Field",
       {
         page: "Int",
         perPage: "Int",
@@ -4563,7 +4352,6 @@ export const schema = {
       "MediaConnection",
     ],
     manga: [
-      "__Field",
       {
         page: "Int",
         perPage: "Int",
@@ -4571,7 +4359,6 @@ export const schema = {
       "MediaConnection",
     ],
     characters: [
-      "__Field",
       {
         page: "Int",
         perPage: "Int",
@@ -4579,7 +4366,6 @@ export const schema = {
       "CharacterConnection",
     ],
     staff: [
-      "__Field",
       {
         page: "Int",
         perPage: "Int",
@@ -4587,7 +4373,6 @@ export const schema = {
       "StaffConnection",
     ],
     studios: [
-      "__Field",
       {
         page: "Int",
         perPage: "Int",
@@ -4604,7 +4389,6 @@ export const schema = {
     node: "Media",
     id: "Int",
     relationType: [
-      "__Field",
       {
         version: "Int",
       },
@@ -4618,7 +4402,6 @@ export const schema = {
     dubGroup: "String",
     staffRole: "String",
     voiceActors: [
-      "__Field",
       {
         language: "StaffLanguage",
         sort: ["StaffSort"],
@@ -4626,7 +4409,6 @@ export const schema = {
       ["Staff"],
     ],
     voiceActorRoles: [
-      "__Field",
       {
         language: "StaffLanguage",
         sort: ["StaffSort"],
@@ -4642,14 +4424,12 @@ export const schema = {
     type: "MediaType",
     format: "MediaFormat",
     status: [
-      "__Field",
       {
         version: "Int",
       },
       "MediaStatus",
     ],
     description: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -4667,7 +4447,6 @@ export const schema = {
     countryOfOrigin: "CountryCode",
     isLicensed: "Boolean",
     source: [
-      "__Field",
       {
         version: "Int",
       },
@@ -4689,7 +4468,6 @@ export const schema = {
     tags: ["MediaTag"],
     relations: "MediaConnection",
     characters: [
-      "__Field",
       {
         sort: ["CharacterSort"],
         role: "CharacterRole",
@@ -4699,7 +4477,6 @@ export const schema = {
       "CharacterConnection",
     ],
     staff: [
-      "__Field",
       {
         sort: ["StaffSort"],
         page: "Int",
@@ -4708,7 +4485,6 @@ export const schema = {
       "StaffConnection",
     ],
     studios: [
-      "__Field",
       {
         sort: ["StudioSort"],
         isMain: "Boolean",
@@ -4720,7 +4496,6 @@ export const schema = {
     isAdult: "Boolean",
     nextAiringEpisode: "AiringSchedule",
     airingSchedule: [
-      "__Field",
       {
         notYetAired: "Boolean",
         page: "Int",
@@ -4729,7 +4504,6 @@ export const schema = {
       "AiringScheduleConnection",
     ],
     trends: [
-      "__Field",
       {
         sort: ["MediaTrendSort"],
         releasing: "Boolean",
@@ -4743,7 +4517,6 @@ export const schema = {
     rankings: ["MediaRank"],
     mediaListEntry: "MediaList",
     reviews: [
-      "__Field",
       {
         limit: "Int",
         sort: ["ReviewSort"],
@@ -4753,7 +4526,6 @@ export const schema = {
       "ReviewConnection",
     ],
     recommendations: [
-      "__Field",
       {
         sort: ["RecommendationSort"],
         page: "Int",
@@ -4770,21 +4542,18 @@ export const schema = {
   },
   MediaTitle: {
     romaji: [
-      "__Field",
       {
         stylised: "Boolean",
       },
       "String",
     ],
     english: [
-      "__Field",
       {
         stylised: "Boolean",
       },
       "String",
     ],
     native: [
-      "__Field",
       {
         stylised: "Boolean",
       },
@@ -4892,7 +4661,6 @@ export const schema = {
     role: "CharacterRole",
     name: "String",
     voiceActors: [
-      "__Field",
       {
         language: "StaffLanguage",
         sort: ["StaffSort"],
@@ -4900,7 +4668,6 @@ export const schema = {
       ["Staff"],
     ],
     voiceActorRoles: [
-      "__Field",
       {
         language: "StaffLanguage",
         sort: ["StaffSort"],
@@ -4915,7 +4682,6 @@ export const schema = {
     name: "CharacterName",
     image: "CharacterImage",
     description: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -4929,7 +4695,6 @@ export const schema = {
     isFavouriteBlocked: "Boolean!",
     siteUrl: "String",
     media: [
-      "__Field",
       {
         sort: ["MediaSort"],
         type: "MediaType",
@@ -5027,7 +4792,6 @@ export const schema = {
     languageV2: "String",
     image: "StaffImage",
     description: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -5045,7 +4809,6 @@ export const schema = {
     isFavouriteBlocked: "Boolean!",
     siteUrl: "String",
     staffMedia: [
-      "__Field",
       {
         sort: ["MediaSort"],
         type: "MediaType",
@@ -5056,7 +4819,6 @@ export const schema = {
       "MediaConnection",
     ],
     characters: [
-      "__Field",
       {
         sort: ["CharacterSort"],
         page: "Int",
@@ -5065,7 +4827,6 @@ export const schema = {
       "CharacterConnection",
     ],
     characterMedia: [
-      "__Field",
       {
         sort: ["MediaSort"],
         onList: "Boolean",
@@ -5136,7 +4897,6 @@ export const schema = {
     name: "String!",
     isAnimationStudio: "Boolean!",
     media: [
-      "__Field",
       {
         sort: ["MediaSort"],
         isMain: "Boolean",
@@ -5245,7 +5005,6 @@ export const schema = {
     mediaId: "Int!",
     status: "MediaListStatus",
     score: [
-      "__Field",
       {
         format: "ScoreFormat",
       },
@@ -5259,7 +5018,6 @@ export const schema = {
     notes: "String",
     hiddenFromStatusLists: "Boolean",
     customLists: [
-      "__Field",
       {
         asArray: "Boolean",
       },
@@ -5301,7 +5059,6 @@ export const schema = {
     mediaType: "MediaType",
     summary: "String",
     body: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -5396,7 +5153,6 @@ export const schema = {
     chaptersRead: "Int!",
     volumesRead: "Int!",
     formats: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5404,7 +5160,6 @@ export const schema = {
       ["UserFormatStatistic"],
     ],
     statuses: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5412,7 +5167,6 @@ export const schema = {
       ["UserStatusStatistic"],
     ],
     scores: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5420,7 +5174,6 @@ export const schema = {
       ["UserScoreStatistic"],
     ],
     lengths: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5428,7 +5181,6 @@ export const schema = {
       ["UserLengthStatistic"],
     ],
     releaseYears: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5436,7 +5188,6 @@ export const schema = {
       ["UserReleaseYearStatistic"],
     ],
     startYears: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5444,7 +5195,6 @@ export const schema = {
       ["UserStartYearStatistic"],
     ],
     genres: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5452,7 +5202,6 @@ export const schema = {
       ["UserGenreStatistic"],
     ],
     tags: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5460,7 +5209,6 @@ export const schema = {
       ["UserTagStatistic"],
     ],
     countries: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5468,7 +5216,6 @@ export const schema = {
       ["UserCountryStatistic"],
     ],
     voiceActors: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5476,7 +5223,6 @@ export const schema = {
       ["UserVoiceActorStatistic"],
     ],
     staff: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5484,7 +5230,6 @@ export const schema = {
       ["UserStaffStatistic"],
     ],
     studios: [
-      "__Field",
       {
         limit: "Int",
         sort: ["UserStatisticsSort"],
@@ -5725,7 +5470,25 @@ export const schema = {
     EPISODE: "ENUM",
     EPISODE_DESC: "ENUM",
   },
-  NotificationUnion: `"AiringNotification" | "FollowingNotification" | "ActivityMessageNotification" | "ActivityMentionNotification" | "ActivityReplyNotification" | "ActivityReplySubscribedNotification" | "ActivityLikeNotification" | "ActivityReplyLikeNotification" | "ThreadCommentMentionNotification" | "ThreadCommentReplyNotification" | "ThreadCommentSubscribedNotification" | "ThreadCommentLikeNotification" | "ThreadLikeNotification" | "RelatedMediaAdditionNotification" | "MediaDataChangeNotification" | "MediaMergeNotification" | "MediaDeletionNotification"`,
+  NotificationUnion: [
+    "AiringNotification!",
+    "FollowingNotification!",
+    "ActivityMessageNotification!",
+    "ActivityMentionNotification!",
+    "ActivityReplyNotification!",
+    "ActivityReplySubscribedNotification!",
+    "ActivityLikeNotification!",
+    "ActivityReplyLikeNotification!",
+    "ThreadCommentMentionNotification!",
+    "ThreadCommentReplyNotification!",
+    "ThreadCommentSubscribedNotification!",
+    "ThreadCommentLikeNotification!",
+    "ThreadLikeNotification!",
+    "RelatedMediaAdditionNotification!",
+    "MediaDataChangeNotification!",
+    "MediaMergeNotification!",
+    "MediaDeletionNotification!",
+  ],
   AiringNotification: {
     id: "Int!",
     type: "NotificationType",
@@ -5760,7 +5523,6 @@ export const schema = {
     type: "ActivityType",
     replyCount: "Int!",
     message: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -5790,7 +5552,6 @@ export const schema = {
     userId: "Int",
     activityId: "Int",
     text: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -5812,14 +5573,13 @@ export const schema = {
     activity: "ActivityUnion",
     user: "User",
   },
-  ActivityUnion: `"TextActivity" | "ListActivity" | "MessageActivity"`,
+  ActivityUnion: ["TextActivity!", "ListActivity!", "MessageActivity!"],
   TextActivity: {
     id: "Int!",
     userId: "Int",
     type: "ActivityType",
     replyCount: "Int!",
     text: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -5910,7 +5670,6 @@ export const schema = {
     id: "Int!",
     title: "String",
     body: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -5945,7 +5704,6 @@ export const schema = {
     userId: "Int",
     threadId: "Int",
     comment: [
-      "__Field",
       {
         asHtml: "Boolean",
       },
@@ -6079,14 +5837,12 @@ export const schema = {
     user: "User",
     hasNextChunk: "Boolean",
     statusLists: [
-      "__Field",
       {
         asArray: "Boolean",
       },
       [["MediaList"]],
     ],
     customLists: [
-      "__Field",
       {
         asArray: "Boolean",
       },
@@ -6110,7 +5866,6 @@ export const schema = {
   },
   SiteStatistics: {
     users: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6119,7 +5874,6 @@ export const schema = {
       "SiteTrendConnection",
     ],
     anime: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6128,7 +5882,6 @@ export const schema = {
       "SiteTrendConnection",
     ],
     manga: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6137,7 +5890,6 @@ export const schema = {
       "SiteTrendConnection",
     ],
     characters: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6146,7 +5898,6 @@ export const schema = {
       "SiteTrendConnection",
     ],
     staff: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6155,7 +5906,6 @@ export const schema = {
       "SiteTrendConnection",
     ],
     studios: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6164,7 +5914,6 @@ export const schema = {
       "SiteTrendConnection",
     ],
     reviews: [
-      "__Field",
       {
         sort: ["SiteTrendSort"],
         page: "Int",
@@ -6201,7 +5950,6 @@ export const schema = {
   },
   Mutation: {
     UpdateUser: [
-      "__Field",
       {
         about: "String",
         titleLanguage: "UserTitleLanguage",
@@ -6223,7 +5971,6 @@ export const schema = {
       "User",
     ],
     SaveMediaListEntry: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -6245,7 +5992,6 @@ export const schema = {
       "MediaList",
     ],
     UpdateMediaListEntries: [
-      "__Field",
       {
         status: "MediaListStatus",
         score: "Float",
@@ -6265,14 +6011,12 @@ export const schema = {
       ["MediaList"],
     ],
     DeleteMediaListEntry: [
-      "__Field",
       {
         id: "Int",
       },
       "Deleted",
     ],
     DeleteCustomList: [
-      "__Field",
       {
         customList: "String",
         type: "MediaType",
@@ -6280,7 +6024,6 @@ export const schema = {
       "Deleted",
     ],
     SaveTextActivity: [
-      "__Field",
       {
         id: "Int",
         text: "String",
@@ -6289,7 +6032,6 @@ export const schema = {
       "TextActivity",
     ],
     SaveMessageActivity: [
-      "__Field",
       {
         id: "Int",
         message: "String",
@@ -6301,7 +6043,6 @@ export const schema = {
       "MessageActivity",
     ],
     SaveListActivity: [
-      "__Field",
       {
         id: "Int",
         locked: "Boolean",
@@ -6309,14 +6050,12 @@ export const schema = {
       "ListActivity",
     ],
     DeleteActivity: [
-      "__Field",
       {
         id: "Int",
       },
       "Deleted",
     ],
     ToggleActivityPin: [
-      "__Field",
       {
         id: "Int",
         pinned: "Boolean",
@@ -6324,7 +6063,6 @@ export const schema = {
       "ActivityUnion",
     ],
     ToggleActivitySubscription: [
-      "__Field",
       {
         activityId: "Int",
         subscribe: "Boolean",
@@ -6332,7 +6070,6 @@ export const schema = {
       "ActivityUnion",
     ],
     SaveActivityReply: [
-      "__Field",
       {
         id: "Int",
         activityId: "Int",
@@ -6342,14 +6079,12 @@ export const schema = {
       "ActivityReply",
     ],
     DeleteActivityReply: [
-      "__Field",
       {
         id: "Int",
       },
       "Deleted",
     ],
     ToggleLike: [
-      "__Field",
       {
         id: "Int",
         type: "LikeableType",
@@ -6357,7 +6092,6 @@ export const schema = {
       ["User"],
     ],
     ToggleLikeV2: [
-      "__Field",
       {
         id: "Int",
         type: "LikeableType",
@@ -6365,14 +6099,12 @@ export const schema = {
       "LikeableUnion",
     ],
     ToggleFollow: [
-      "__Field",
       {
         userId: "Int",
       },
       "User",
     ],
     ToggleFavourite: [
-      "__Field",
       {
         animeId: "Int",
         mangaId: "Int",
@@ -6383,7 +6115,6 @@ export const schema = {
       "Favourites",
     ],
     UpdateFavouriteOrder: [
-      "__Field",
       {
         animeIds: ["Int"],
         mangaIds: ["Int"],
@@ -6399,7 +6130,6 @@ export const schema = {
       "Favourites",
     ],
     SaveReview: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -6411,14 +6141,12 @@ export const schema = {
       "Review",
     ],
     DeleteReview: [
-      "__Field",
       {
         id: "Int",
       },
       "Deleted",
     ],
     RateReview: [
-      "__Field",
       {
         reviewId: "Int",
         rating: "ReviewRating",
@@ -6426,7 +6154,6 @@ export const schema = {
       "Review",
     ],
     SaveRecommendation: [
-      "__Field",
       {
         mediaId: "Int",
         mediaRecommendationId: "Int",
@@ -6435,7 +6162,6 @@ export const schema = {
       "Recommendation",
     ],
     SaveThread: [
-      "__Field",
       {
         id: "Int",
         title: "String",
@@ -6448,14 +6174,12 @@ export const schema = {
       "Thread",
     ],
     DeleteThread: [
-      "__Field",
       {
         id: "Int",
       },
       "Deleted",
     ],
     ToggleThreadSubscription: [
-      "__Field",
       {
         threadId: "Int",
         subscribe: "Boolean",
@@ -6463,7 +6187,6 @@ export const schema = {
       "Thread",
     ],
     SaveThreadComment: [
-      "__Field",
       {
         id: "Int",
         threadId: "Int",
@@ -6474,14 +6197,12 @@ export const schema = {
       "ThreadComment",
     ],
     DeleteThreadComment: [
-      "__Field",
       {
         id: "Int",
       },
       "Deleted",
     ],
     UpdateAniChartSettings: [
-      "__Field",
       {
         titleLanguage: "String",
         outgoingLinkProvider: "String",
@@ -6491,7 +6212,6 @@ export const schema = {
       "Json",
     ],
     UpdateAniChartHighlights: [
-      "__Field",
       {
         highlights: ["AniChartHighlightInput"],
       },
@@ -6522,14 +6242,20 @@ export const schema = {
   Deleted: {
     deleted: "Boolean",
   },
-  LikeableUnion: `"ListActivity" | "TextActivity" | "MessageActivity" | "ActivityReply" | "Thread" | "ThreadComment"`,
+  LikeableUnion: [
+    "ListActivity!",
+    "TextActivity!",
+    "MessageActivity!",
+    "ActivityReply!",
+    "Thread!",
+    "ThreadComment!",
+  ],
   AniChartHighlightInput: {
     mediaId: "Int",
     highlight: "String",
   },
   InternalPage: {
     mediaSubmissions: [
-      "__Field",
       {
         mediaId: "Int",
         submissionId: "Int",
@@ -6542,7 +6268,6 @@ export const schema = {
       ["MediaSubmission"],
     ],
     characterSubmissions: [
-      "__Field",
       {
         characterId: "Int",
         userId: "Int",
@@ -6553,7 +6278,6 @@ export const schema = {
       ["CharacterSubmission"],
     ],
     staffSubmissions: [
-      "__Field",
       {
         staffId: "Int",
         userId: "Int",
@@ -6564,7 +6288,6 @@ export const schema = {
       ["StaffSubmission"],
     ],
     revisionHistory: [
-      "__Field",
       {
         userId: "Int",
         mediaId: "Int",
@@ -6575,7 +6298,6 @@ export const schema = {
       ["RevisionHistory"],
     ],
     reports: [
-      "__Field",
       {
         reporterId: "Int",
         reportedId: "Int",
@@ -6583,7 +6305,6 @@ export const schema = {
       ["Report"],
     ],
     modActions: [
-      "__Field",
       {
         userId: "Int",
         modId: "Int",
@@ -6591,7 +6312,6 @@ export const schema = {
       ["ModAction"],
     ],
     userBlockSearch: [
-      "__Field",
       {
         search: "String",
       },
@@ -6599,7 +6319,6 @@ export const schema = {
     ],
     pageInfo: "PageInfo",
     users: [
-      "__Field",
       {
         id: "Int",
         name: "String",
@@ -6610,7 +6329,6 @@ export const schema = {
       ["User"],
     ],
     media: [
-      "__Field",
       {
         id: "Int",
         idMal: "Int",
@@ -6685,7 +6403,6 @@ export const schema = {
       ["Media"],
     ],
     characters: [
-      "__Field",
       {
         id: "Int",
         isBirthday: "Boolean",
@@ -6698,7 +6415,6 @@ export const schema = {
       ["Character"],
     ],
     staff: [
-      "__Field",
       {
         id: "Int",
         isBirthday: "Boolean",
@@ -6711,7 +6427,6 @@ export const schema = {
       ["Staff"],
     ],
     studios: [
-      "__Field",
       {
         id: "Int",
         search: "String",
@@ -6723,7 +6438,6 @@ export const schema = {
       ["Studio"],
     ],
     mediaList: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -6754,7 +6468,6 @@ export const schema = {
       ["MediaList"],
     ],
     airingSchedules: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -6779,7 +6492,6 @@ export const schema = {
       ["AiringSchedule"],
     ],
     mediaTrends: [
-      "__Field",
       {
         mediaId: "Int",
         date: "Int",
@@ -6810,7 +6522,6 @@ export const schema = {
       ["MediaTrend"],
     ],
     notifications: [
-      "__Field",
       {
         type: "NotificationType",
         resetNotificationCount: "Boolean",
@@ -6819,7 +6530,6 @@ export const schema = {
       ["NotificationUnion"],
     ],
     followers: [
-      "__Field",
       {
         userId: "Int!",
         sort: ["UserSort"],
@@ -6827,7 +6537,6 @@ export const schema = {
       ["User"],
     ],
     following: [
-      "__Field",
       {
         userId: "Int!",
         sort: ["UserSort"],
@@ -6835,7 +6544,6 @@ export const schema = {
       ["User"],
     ],
     activities: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -6868,7 +6576,6 @@ export const schema = {
       ["ActivityUnion"],
     ],
     activityReplies: [
-      "__Field",
       {
         id: "Int",
         activityId: "Int",
@@ -6876,7 +6583,6 @@ export const schema = {
       ["ActivityReply"],
     ],
     threads: [
-      "__Field",
       {
         id: "Int",
         userId: "Int",
@@ -6891,7 +6597,6 @@ export const schema = {
       ["Thread"],
     ],
     threadComments: [
-      "__Field",
       {
         id: "Int",
         threadId: "Int",
@@ -6901,7 +6606,6 @@ export const schema = {
       ["ThreadComment"],
     ],
     reviews: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -6912,7 +6616,6 @@ export const schema = {
       ["Review"],
     ],
     recommendations: [
-      "__Field",
       {
         id: "Int",
         mediaId: "Int",
@@ -6927,7 +6630,6 @@ export const schema = {
       ["Recommendation"],
     ],
     likes: [
-      "__Field",
       {
         likeableId: "Int",
         type: "LikeableType",

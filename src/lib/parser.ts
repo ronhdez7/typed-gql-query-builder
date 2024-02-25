@@ -1,13 +1,13 @@
-import { BuilderResult, QueryField, QuerySchema } from "../../types";
+import { BuilderResult, ModelField, ModelSchema } from "../types";
 
 export class QueryParser {
   private count = 0;
 
-  constructor(private readonly schema: QuerySchema) {}
+  constructor(private readonly schema: ModelSchema) {}
 
   parseFields(
     query: BuilderResult | boolean | undefined,
-    model: QueryField
+    model: ModelField
   ): string {
     let output = "";
 
@@ -33,7 +33,7 @@ export class QueryParser {
           let valName: string;
           if (typeof modelField === "string") valName = removeMark(modelField);
           else if (modelField.length === 1) valName = removeMark(modelField[0]);
-          else valName = removeMark(grabString(modelField[2]));
+          else valName = removeMark(grabString(modelField[1]));
           const newModel = this.schema[valName];
           if (typeof newModel !== "object") continue;
           output += `{\n ${this.parseAllFields(newModel)}\n}`;
@@ -47,7 +47,7 @@ export class QueryParser {
             // handle args
             const args = queryField["args"] as Record<string, any>;
             output += this.parseArguments(args);
-            valName = removeMark(grabString(modelField[2]));
+            valName = removeMark(grabString(modelField[1]));
             data = queryField["data"];
           }
           const fields = this.schema[valName];
@@ -70,7 +70,7 @@ export class QueryParser {
    * @param skip Fields to skip (used internally to avoid recursions)
    * @returns String with querying fields
    */
-  parseAllFields(model: QueryField, skip: string[] = []): string {
+  parseAllFields(model: ModelField, skip: string[] = []): string {
     let output = "";
 
     for (const key in model) {
@@ -99,7 +99,7 @@ export class QueryParser {
         if (!field || typeof field === "string") continue;
         output += ` {\n${this.parseAllFields(field, visited)}\n}\n`;
       } else {
-        const args = val[1];
+        const args = val[0];
         let argsRequired = false;
         for (const argKey in args) {
           const argVal = args[argKey];
@@ -117,7 +117,7 @@ export class QueryParser {
           continue;
         }
 
-        const fieldVal = val[2];
+        const fieldVal = val[1];
         let valName = typeof fieldVal === "string" ? fieldVal : fieldVal[0];
         if (!valName) continue;
         if (valName.endsWith("!")) valName = valName.slice(0, -1);

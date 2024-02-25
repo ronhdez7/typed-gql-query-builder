@@ -22,8 +22,8 @@ function main() {
     },
   });
 
-  // console.log(query);
-  console.log(mutation);
+  console.log(query);
+  // console.log(mutation);
 }
 
 main();
