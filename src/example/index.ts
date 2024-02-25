@@ -1,8 +1,7 @@
-import { gql } from "..";
-import { MediaListStatus } from "../generated/output";
+import { gql } from "./gql";
 
 function main() {
-  const query = gql().query("getPokemon", {
+  const query = gql.query("getPokemon", {
     Media: {
       args: {
         id: 15125,
@@ -14,11 +13,10 @@ function main() {
     },
   });
 
-  const mutation = gql().mutation("mutate", {
+  const mutation = gql.mutation("mutate", {
     SaveMediaListEntry: {
       args: {
         mediaId: 1,
-        status: MediaListStatus.CURRENT,
       },
       data: {},
     },
