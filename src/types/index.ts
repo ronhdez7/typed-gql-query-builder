@@ -1,3 +1,6 @@
+import { Query } from "../example/generated/output";
+import { BuiltQuery } from "../lib/built";
+
 type PickNullable<T> = {
   [P in keyof T as null extends T[P] ? P : never]: T[P];
 };
@@ -55,6 +58,31 @@ export type ModelField = {
   [key: string]:
     | string
     | [string]
-    // | string[]
+    | [string, string, ...string[]]
     | [Record<string, string | string[]>, string | [string]];
 };
+
+/* Extraction */
+// type GenS = { [key: string]: any };
+
+// prettier-ignore
+export type inferQuery<T extends BuiltQuery<any>> = T extends BuiltQuery<infer Q> ? Q : any;
+export type inferResponse<S extends any, T extends any> = S extends object
+  ? S extends Array<infer E>
+    ? inferResponse<E, T>
+    : T extends object
+    ? {
+        [K in keyof T]: K extends keyof S
+          ? S[K] extends [Record<string, any>, infer D]
+            ? inferResponse<D, "data" extends keyof T[K] ? T[K]["data"] : any>
+            : inferResponse<S[K], T[K]>
+          : any;
+      }
+    : ExtractData<S>
+  : S;
+
+type ExtractData<S = any> = S extends object
+  ? S extends [Record<string, any>, infer D]
+    ? ExtractData<D>
+    : { [K in keyof S]: ExtractData<S[K]> }
+  : S;

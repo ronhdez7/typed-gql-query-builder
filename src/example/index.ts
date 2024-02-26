@@ -1,3 +1,5 @@
+import { inferQuery, inferResponse } from "../types";
+import { Query } from "./generated/output";
 import { gql } from "./gql";
 
 function main() {
@@ -11,6 +13,12 @@ function main() {
         title: true,
       },
     },
+    Activity: {
+      args: {},
+      data: {
+        userId: true,
+      },
+    },
   });
 
   const mutation = gql.mutation("mutate", {
@@ -22,7 +30,12 @@ function main() {
     },
   });
 
-  console.log(query);
+  const a: inferResponse<Query, inferQuery<typeof query>> = {} as any;
+
+  a.Media?.id;
+  a.Activity.userId;
+
+  console.log(query.getQuery());
   // console.log(mutation);
 }
 

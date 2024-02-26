@@ -36,23 +36,23 @@ export type Query = {
       isLicensed: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       idMal_not: Int | null;
-      idMal_in: Int | null[] | null;
-      idMal_not_in: Int | null[] | null;
+      idMal_in: (Int | null)[] | null;
+      idMal_not_in: (Int | null)[] | null;
       startDate_greater: FuzzyDateInt | null;
       startDate_lesser: FuzzyDateInt | null;
       startDate_like: String | null;
       endDate_greater: FuzzyDateInt | null;
       endDate_lesser: FuzzyDateInt | null;
       endDate_like: String | null;
-      format_in: MediaFormat | null[] | null;
+      format_in: (MediaFormat | null)[] | null;
       format_not: MediaFormat | null;
-      format_not_in: MediaFormat | null[] | null;
-      status_in: MediaStatus | null[] | null;
+      format_not_in: (MediaFormat | null)[] | null;
+      status_in: (MediaStatus | null)[] | null;
       status_not: MediaStatus | null;
-      status_not_in: MediaStatus | null[] | null;
+      status_not_in: (MediaStatus | null)[] | null;
       episodes_greater: Int | null;
       episodes_lesser: Int | null;
       duration_greater: Int | null;
@@ -61,22 +61,22 @@ export type Query = {
       chapters_lesser: Int | null;
       volumes_greater: Int | null;
       volumes_lesser: Int | null;
-      genre_in: String | null[] | null;
-      genre_not_in: String | null[] | null;
-      tag_in: String | null[] | null;
-      tag_not_in: String | null[] | null;
-      tagCategory_in: String | null[] | null;
-      tagCategory_not_in: String | null[] | null;
-      licensedBy_in: String | null[] | null;
-      licensedById_in: Int | null[] | null;
+      genre_in: (String | null)[] | null;
+      genre_not_in: (String | null)[] | null;
+      tag_in: (String | null)[] | null;
+      tag_not_in: (String | null)[] | null;
+      tagCategory_in: (String | null)[] | null;
+      tagCategory_not_in: (String | null)[] | null;
+      licensedBy_in: (String | null)[] | null;
+      licensedById_in: (Int | null)[] | null;
       averageScore_not: Int | null;
       averageScore_greater: Int | null;
       averageScore_lesser: Int | null;
       popularity_not: Int | null;
       popularity_greater: Int | null;
       popularity_lesser: Int | null;
-      source_in: MediaSource | null[] | null;
-      sort: MediaSort | null[] | null;
+      source_in: (MediaSource | null)[] | null;
+      sort: (MediaSort | null)[] | null;
     },
     Media | null
   ];
@@ -90,8 +90,8 @@ export type Query = {
       episode: Int | null;
       releasing: Boolean | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       date_greater: Int | null;
       date_lesser: Int | null;
       trending_greater: Int | null;
@@ -106,7 +106,7 @@ export type Query = {
       episode_greater: Int | null;
       episode_lesser: Int | null;
       episode_not: Int | null;
-      sort: MediaTrendSort | null[] | null;
+      sort: (MediaTrendSort | null)[] | null;
     },
     MediaTrend | null
   ];
@@ -118,19 +118,19 @@ export type Query = {
       airingAt: Int | null;
       notYetAired: Boolean | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       episode_not: Int | null;
-      episode_in: Int | null[] | null;
-      episode_not_in: Int | null[] | null;
+      episode_in: (Int | null)[] | null;
+      episode_not_in: (Int | null)[] | null;
       episode_greater: Int | null;
       episode_lesser: Int | null;
       airingAt_greater: Int | null;
       airingAt_lesser: Int | null;
-      sort: AiringSort | null[] | null;
+      sort: (AiringSort | null)[] | null;
     },
     AiringSchedule | null
   ];
@@ -140,9 +140,9 @@ export type Query = {
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: CharacterSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (CharacterSort | null)[] | null;
     },
     Character | null
   ];
@@ -152,9 +152,9 @@ export type Query = {
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: StaffSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (StaffSort | null)[] | null;
     },
     Staff | null
   ];
@@ -171,12 +171,12 @@ export type Query = {
       startedAt: FuzzyDateInt | null;
       completedAt: FuzzyDateInt | null;
       compareWithAuthList: Boolean | null;
-      userId_in: Int | null[] | null;
-      status_in: MediaListStatus | null[] | null;
-      status_not_in: MediaListStatus | null[] | null;
+      userId_in: (Int | null)[] | null;
+      status_in: (MediaListStatus | null)[] | null;
+      status_not_in: (MediaListStatus | null)[] | null;
       status_not: MediaListStatus | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
       startedAt_lesser: FuzzyDateInt | null;
@@ -184,7 +184,7 @@ export type Query = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort | null[] | null;
+      sort: (MediaListSort | null)[] | null;
     },
     MediaList | null
   ];
@@ -200,8 +200,8 @@ export type Query = {
       forceSingleCompletedList: Boolean | null;
       chunk: Int | null;
       perChunk: Int | null;
-      status_in: MediaListStatus | null[] | null;
-      status_not_in: MediaListStatus | null[] | null;
+      status_in: (MediaListStatus | null)[] | null;
+      status_not_in: (MediaListStatus | null)[] | null;
       status_not: MediaListStatus | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
@@ -210,16 +210,16 @@ export type Query = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort | null[] | null;
+      sort: (MediaListSort | null)[] | null;
     },
     MediaListCollection | null
   ];
-  GenreCollection: String | null[] | null;
+  GenreCollection: (String | null)[] | null;
   MediaTagCollection: [
     {
       status: Int | null;
     },
-    MediaTag | null[] | null
+    (MediaTag | null)[] | null
   ];
   User: [
     {
@@ -227,7 +227,7 @@ export type Query = {
       name: String | null;
       isModerator: Boolean | null;
       search: String | null;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
     User | null
   ];
@@ -236,7 +236,7 @@ export type Query = {
     {
       type: NotificationType | null;
       resetNotificationCount: Boolean | null;
-      type_in: NotificationType | null[] | null;
+      type_in: (NotificationType | null)[] | null;
     },
     NotificationUnion
   ];
@@ -245,9 +245,9 @@ export type Query = {
       id: Int | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: StudioSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (StudioSort | null)[] | null;
     },
     Studio | null
   ];
@@ -257,7 +257,7 @@ export type Query = {
       mediaId: Int | null;
       userId: Int | null;
       mediaType: MediaType | null;
-      sort: ReviewSort | null[] | null;
+      sort: (ReviewSort | null)[] | null;
     },
     Review | null
   ];
@@ -273,23 +273,23 @@ export type Query = {
       hasRepliesOrTypeText: Boolean | null;
       createdAt: Int | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       userId_not: Int | null;
-      userId_in: Int | null[] | null;
-      userId_not_in: Int | null[] | null;
+      userId_in: (Int | null)[] | null;
+      userId_not_in: (Int | null)[] | null;
       messengerId_not: Int | null;
-      messengerId_in: Int | null[] | null;
-      messengerId_not_in: Int | null[] | null;
+      messengerId_in: (Int | null)[] | null;
+      messengerId_not_in: (Int | null)[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       type_not: ActivityType | null;
-      type_in: ActivityType | null[] | null;
-      type_not_in: ActivityType | null[] | null;
+      type_in: (ActivityType | null)[] | null;
+      type_not_in: (ActivityType | null)[] | null;
       createdAt_greater: Int | null;
       createdAt_lesser: Int | null;
-      sort: ActivitySort | null[] | null;
+      sort: (ActivitySort | null)[] | null;
     },
     ActivityUnion
   ];
@@ -303,14 +303,14 @@ export type Query = {
   Following: [
     {
       userId: Int;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
     User | null
   ];
   Follower: [
     {
       userId: Int;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
     User | null
   ];
@@ -323,8 +323,8 @@ export type Query = {
       categoryId: Int | null;
       mediaCategoryId: Int | null;
       search: String | null;
-      id_in: Int | null[] | null;
-      sort: ThreadSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      sort: (ThreadSort | null)[] | null;
     },
     Thread | null
   ];
@@ -333,9 +333,9 @@ export type Query = {
       id: Int | null;
       threadId: Int | null;
       userId: Int | null;
-      sort: ThreadCommentSort | null[] | null;
+      sort: (ThreadCommentSort | null)[] | null;
     },
-    ThreadComment | null[] | null
+    (ThreadComment | null)[] | null
   ];
   Recommendation: [
     {
@@ -347,7 +347,7 @@ export type Query = {
       onList: Boolean | null;
       rating_greater: Int | null;
       rating_lesser: Int | null;
-      sort: RecommendationSort | null[] | null;
+      sort: (RecommendationSort | null)[] | null;
     },
     Recommendation | null
   ];
@@ -372,7 +372,7 @@ export type Query = {
       type: ExternalLinkType | null;
       mediaType: ExternalLinkMediaType | null;
     },
-    MediaExternalLink | null[] | null
+    (MediaExternalLink | null)[] | null
   ];
 };
 
@@ -386,9 +386,9 @@ export type Page = {
       name: String | null;
       isModerator: Boolean | null;
       search: String | null;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   media: [
     {
@@ -420,23 +420,23 @@ export type Page = {
       isLicensed: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       idMal_not: Int | null;
-      idMal_in: Int | null[] | null;
-      idMal_not_in: Int | null[] | null;
+      idMal_in: (Int | null)[] | null;
+      idMal_not_in: (Int | null)[] | null;
       startDate_greater: FuzzyDateInt | null;
       startDate_lesser: FuzzyDateInt | null;
       startDate_like: String | null;
       endDate_greater: FuzzyDateInt | null;
       endDate_lesser: FuzzyDateInt | null;
       endDate_like: String | null;
-      format_in: MediaFormat | null[] | null;
+      format_in: (MediaFormat | null)[] | null;
       format_not: MediaFormat | null;
-      format_not_in: MediaFormat | null[] | null;
-      status_in: MediaStatus | null[] | null;
+      format_not_in: (MediaFormat | null)[] | null;
+      status_in: (MediaStatus | null)[] | null;
       status_not: MediaStatus | null;
-      status_not_in: MediaStatus | null[] | null;
+      status_not_in: (MediaStatus | null)[] | null;
       episodes_greater: Int | null;
       episodes_lesser: Int | null;
       duration_greater: Int | null;
@@ -445,24 +445,24 @@ export type Page = {
       chapters_lesser: Int | null;
       volumes_greater: Int | null;
       volumes_lesser: Int | null;
-      genre_in: String | null[] | null;
-      genre_not_in: String | null[] | null;
-      tag_in: String | null[] | null;
-      tag_not_in: String | null[] | null;
-      tagCategory_in: String | null[] | null;
-      tagCategory_not_in: String | null[] | null;
-      licensedBy_in: String | null[] | null;
-      licensedById_in: Int | null[] | null;
+      genre_in: (String | null)[] | null;
+      genre_not_in: (String | null)[] | null;
+      tag_in: (String | null)[] | null;
+      tag_not_in: (String | null)[] | null;
+      tagCategory_in: (String | null)[] | null;
+      tagCategory_not_in: (String | null)[] | null;
+      licensedBy_in: (String | null)[] | null;
+      licensedById_in: (Int | null)[] | null;
       averageScore_not: Int | null;
       averageScore_greater: Int | null;
       averageScore_lesser: Int | null;
       popularity_not: Int | null;
       popularity_greater: Int | null;
       popularity_lesser: Int | null;
-      source_in: MediaSource | null[] | null;
-      sort: MediaSort | null[] | null;
+      source_in: (MediaSource | null)[] | null;
+      sort: (MediaSort | null)[] | null;
     },
-    Media | null[] | null
+    (Media | null)[] | null
   ];
   characters: [
     {
@@ -470,11 +470,11 @@ export type Page = {
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: CharacterSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (CharacterSort | null)[] | null;
     },
-    Character | null[] | null
+    (Character | null)[] | null
   ];
   staff: [
     {
@@ -482,22 +482,22 @@ export type Page = {
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: StaffSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (StaffSort | null)[] | null;
     },
-    Staff | null[] | null
+    (Staff | null)[] | null
   ];
   studios: [
     {
       id: Int | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: StudioSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (StudioSort | null)[] | null;
     },
-    Studio | null[] | null
+    (Studio | null)[] | null
   ];
   mediaList: [
     {
@@ -512,12 +512,12 @@ export type Page = {
       startedAt: FuzzyDateInt | null;
       completedAt: FuzzyDateInt | null;
       compareWithAuthList: Boolean | null;
-      userId_in: Int | null[] | null;
-      status_in: MediaListStatus | null[] | null;
-      status_not_in: MediaListStatus | null[] | null;
+      userId_in: (Int | null)[] | null;
+      status_in: (MediaListStatus | null)[] | null;
+      status_not_in: (MediaListStatus | null)[] | null;
       status_not: MediaListStatus | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
       startedAt_lesser: FuzzyDateInt | null;
@@ -525,9 +525,9 @@ export type Page = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort | null[] | null;
+      sort: (MediaListSort | null)[] | null;
     },
-    MediaList | null[] | null
+    (MediaList | null)[] | null
   ];
   airingSchedules: [
     {
@@ -537,21 +537,21 @@ export type Page = {
       airingAt: Int | null;
       notYetAired: Boolean | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       episode_not: Int | null;
-      episode_in: Int | null[] | null;
-      episode_not_in: Int | null[] | null;
+      episode_in: (Int | null)[] | null;
+      episode_not_in: (Int | null)[] | null;
       episode_greater: Int | null;
       episode_lesser: Int | null;
       airingAt_greater: Int | null;
       airingAt_lesser: Int | null;
-      sort: AiringSort | null[] | null;
+      sort: (AiringSort | null)[] | null;
     },
-    AiringSchedule | null[] | null
+    (AiringSchedule | null)[] | null
   ];
   mediaTrends: [
     {
@@ -563,8 +563,8 @@ export type Page = {
       episode: Int | null;
       releasing: Boolean | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       date_greater: Int | null;
       date_lesser: Int | null;
       trending_greater: Int | null;
@@ -579,31 +579,31 @@ export type Page = {
       episode_greater: Int | null;
       episode_lesser: Int | null;
       episode_not: Int | null;
-      sort: MediaTrendSort | null[] | null;
+      sort: (MediaTrendSort | null)[] | null;
     },
-    MediaTrend | null[] | null
+    (MediaTrend | null)[] | null
   ];
   notifications: [
     {
       type: NotificationType | null;
       resetNotificationCount: Boolean | null;
-      type_in: NotificationType | null[] | null;
+      type_in: (NotificationType | null)[] | null;
     },
     NotificationUnion[] | null
   ];
   followers: [
     {
       userId: Int;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   following: [
     {
       userId: Int;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   activities: [
     {
@@ -617,23 +617,23 @@ export type Page = {
       hasRepliesOrTypeText: Boolean | null;
       createdAt: Int | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       userId_not: Int | null;
-      userId_in: Int | null[] | null;
-      userId_not_in: Int | null[] | null;
+      userId_in: (Int | null)[] | null;
+      userId_not_in: (Int | null)[] | null;
       messengerId_not: Int | null;
-      messengerId_in: Int | null[] | null;
-      messengerId_not_in: Int | null[] | null;
+      messengerId_in: (Int | null)[] | null;
+      messengerId_not_in: (Int | null)[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       type_not: ActivityType | null;
-      type_in: ActivityType | null[] | null;
-      type_not_in: ActivityType | null[] | null;
+      type_in: (ActivityType | null)[] | null;
+      type_not_in: (ActivityType | null)[] | null;
       createdAt_greater: Int | null;
       createdAt_lesser: Int | null;
-      sort: ActivitySort | null[] | null;
+      sort: (ActivitySort | null)[] | null;
     },
     ActivityUnion[] | null
   ];
@@ -642,7 +642,7 @@ export type Page = {
       id: Int | null;
       activityId: Int | null;
     },
-    ActivityReply | null[] | null
+    (ActivityReply | null)[] | null
   ];
   threads: [
     {
@@ -653,19 +653,19 @@ export type Page = {
       categoryId: Int | null;
       mediaCategoryId: Int | null;
       search: String | null;
-      id_in: Int | null[] | null;
-      sort: ThreadSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      sort: (ThreadSort | null)[] | null;
     },
-    Thread | null[] | null
+    (Thread | null)[] | null
   ];
   threadComments: [
     {
       id: Int | null;
       threadId: Int | null;
       userId: Int | null;
-      sort: ThreadCommentSort | null[] | null;
+      sort: (ThreadCommentSort | null)[] | null;
     },
-    ThreadComment | null[] | null
+    (ThreadComment | null)[] | null
   ];
   reviews: [
     {
@@ -673,9 +673,9 @@ export type Page = {
       mediaId: Int | null;
       userId: Int | null;
       mediaType: MediaType | null;
-      sort: ReviewSort | null[] | null;
+      sort: (ReviewSort | null)[] | null;
     },
-    Review | null[] | null
+    (Review | null)[] | null
   ];
   recommendations: [
     {
@@ -687,16 +687,16 @@ export type Page = {
       onList: Boolean | null;
       rating_greater: Int | null;
       rating_lesser: Int | null;
-      sort: RecommendationSort | null[] | null;
+      sort: (RecommendationSort | null)[] | null;
     },
-    Recommendation | null[] | null
+    (Recommendation | null)[] | null
   ];
   likes: [
     {
       likeableId: Int | null;
       type: LikeableType | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
 };
 
@@ -752,12 +752,12 @@ export type User = {
   siteUrl: String | null;
   donatorTier: Int | null;
   donatorBadge: String | null;
-  moderatorRoles: ModRole | null[] | null;
+  moderatorRoles: (ModRole | null)[] | null;
   createdAt: Int | null;
   updatedAt: Int | null;
   stats: UserStats | null;
   moderatorStatus: String | null;
-  previousNames: UserPreviousName | null[] | null;
+  previousNames: (UserPreviousName | null)[] | null;
 };
 
 export type UserAvatar = {
@@ -772,12 +772,12 @@ export type UserOptions = {
   displayAdultContent: Boolean | null;
   airingNotifications: Boolean | null;
   profileColor: String | null;
-  notificationOptions: NotificationOption | null[] | null;
+  notificationOptions: (NotificationOption | null)[] | null;
   timezone: String | null;
   activityMergeTime: Int | null;
   staffNameLanguage: UserStaffNameLanguage | null;
   restrictMessagesToFollowing: Boolean | null;
-  disabledListActivity: ListActivityOption | null[] | null;
+  disabledListActivity: (ListActivityOption | null)[] | null;
 };
 
 export enum UserTitleLanguage {
@@ -853,11 +853,11 @@ export enum ScoreFormat {
 }
 
 export type MediaListTypeOptions = {
-  sectionOrder: String | null[] | null;
+  sectionOrder: (String | null)[] | null;
   splitCompletedSectionByFormat: Boolean | null;
   theme: Json | null;
-  customLists: String | null[] | null;
-  advancedScoring: String | null[] | null;
+  customLists: (String | null)[] | null;
+  advancedScoring: (String | null)[] | null;
   advancedScoringEnabled: Boolean | null;
 };
 
@@ -900,8 +900,8 @@ export type Favourites = {
 };
 
 export type MediaConnection = {
-  edges: MediaEdge | null[] | null;
-  nodes: Media | null[] | null;
+  edges: (MediaEdge | null)[] | null;
+  nodes: (Media | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -915,7 +915,7 @@ export type MediaEdge = {
     MediaRelation | null
   ];
   isMainStudio: Boolean;
-  characters: Character | null[] | null;
+  characters: (Character | null)[] | null;
   characterRole: CharacterRole | null;
   characterName: String | null;
   roleNotes: String | null;
@@ -924,16 +924,16 @@ export type MediaEdge = {
   voiceActors: [
     {
       language: StaffLanguage | null;
-      sort: StaffSort | null[] | null;
+      sort: (StaffSort | null)[] | null;
     },
-    Staff | null[] | null
+    (Staff | null)[] | null
   ];
   voiceActorRoles: [
     {
       language: StaffLanguage | null;
-      sort: StaffSort | null[] | null;
+      sort: (StaffSort | null)[] | null;
     },
-    StaffRoleType | null[] | null
+    (StaffRoleType | null)[] | null
   ];
   favouriteOrder: Int | null;
 };
@@ -978,19 +978,19 @@ export type Media = {
   updatedAt: Int | null;
   coverImage: MediaCoverImage | null;
   bannerImage: String | null;
-  genres: String | null[] | null;
-  synonyms: String | null[] | null;
+  genres: (String | null)[] | null;
+  synonyms: (String | null)[] | null;
   averageScore: Int | null;
   meanScore: Int | null;
   popularity: Int | null;
   isLocked: Boolean | null;
   trending: Int | null;
   favourites: Int | null;
-  tags: MediaTag | null[] | null;
+  tags: (MediaTag | null)[] | null;
   relations: MediaConnection | null;
   characters: [
     {
-      sort: CharacterSort | null[] | null;
+      sort: (CharacterSort | null)[] | null;
       role: CharacterRole | null;
       page: Int | null;
       perPage: Int | null;
@@ -999,7 +999,7 @@ export type Media = {
   ];
   staff: [
     {
-      sort: StaffSort | null[] | null;
+      sort: (StaffSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -1007,7 +1007,7 @@ export type Media = {
   ];
   studios: [
     {
-      sort: StudioSort | null[] | null;
+      sort: (StudioSort | null)[] | null;
       isMain: Boolean | null;
     },
     StudioConnection | null
@@ -1026,21 +1026,21 @@ export type Media = {
   ];
   trends: [
     {
-      sort: MediaTrendSort | null[] | null;
+      sort: (MediaTrendSort | null)[] | null;
       releasing: Boolean | null;
       page: Int | null;
       perPage: Int | null;
     },
     MediaTrendConnection | null
   ];
-  externalLinks: MediaExternalLink | null[] | null;
-  streamingEpisodes: MediaStreamingEpisode | null[] | null;
-  rankings: MediaRank | null[] | null;
+  externalLinks: (MediaExternalLink | null)[] | null;
+  streamingEpisodes: (MediaStreamingEpisode | null)[] | null;
+  rankings: (MediaRank | null)[] | null;
   mediaListEntry: MediaList | null;
   reviews: [
     {
       limit: Int | null;
-      sort: ReviewSort | null[] | null;
+      sort: (ReviewSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -1048,7 +1048,7 @@ export type Media = {
   ];
   recommendations: [
     {
-      sort: RecommendationSort | null[] | null;
+      sort: (RecommendationSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -1186,8 +1186,8 @@ export enum CharacterRole {
 }
 
 export type CharacterConnection = {
-  edges: CharacterEdge | null[] | null;
-  nodes: Character | null[] | null;
+  edges: (CharacterEdge | null)[] | null;
+  nodes: (Character | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1199,18 +1199,18 @@ export type CharacterEdge = {
   voiceActors: [
     {
       language: StaffLanguage | null;
-      sort: StaffSort | null[] | null;
+      sort: (StaffSort | null)[] | null;
     },
-    Staff | null[] | null
+    (Staff | null)[] | null
   ];
   voiceActorRoles: [
     {
       language: StaffLanguage | null;
-      sort: StaffSort | null[] | null;
+      sort: (StaffSort | null)[] | null;
     },
-    StaffRoleType | null[] | null
+    (StaffRoleType | null)[] | null
   ];
-  media: Media | null[] | null;
+  media: (Media | null)[] | null;
   favouriteOrder: Int | null;
 };
 
@@ -1233,7 +1233,7 @@ export type Character = {
   siteUrl: String | null;
   media: [
     {
-      sort: MediaSort | null[] | null;
+      sort: (MediaSort | null)[] | null;
       type: MediaType | null;
       onList: Boolean | null;
       page: Int | null;
@@ -1252,8 +1252,8 @@ export type CharacterName = {
   last: String | null;
   full: String | null;
   native: String | null;
-  alternative: String | null[] | null;
-  alternativeSpoiler: String | null[] | null;
+  alternative: (String | null)[] | null;
+  alternativeSpoiler: (String | null)[] | null;
   userPreferred: String | null;
 };
 
@@ -1340,12 +1340,12 @@ export type Staff = {
     },
     String | null
   ];
-  primaryOccupations: String | null[] | null;
+  primaryOccupations: (String | null)[] | null;
   gender: String | null;
   dateOfBirth: FuzzyDate | null;
   dateOfDeath: FuzzyDate | null;
   age: Int | null;
-  yearsActive: Int | null[] | null;
+  yearsActive: (Int | null)[] | null;
   homeTown: String | null;
   bloodType: String | null;
   isFavourite: Boolean;
@@ -1353,7 +1353,7 @@ export type Staff = {
   siteUrl: String | null;
   staffMedia: [
     {
-      sort: MediaSort | null[] | null;
+      sort: (MediaSort | null)[] | null;
       type: MediaType | null;
       onList: Boolean | null;
       page: Int | null;
@@ -1363,7 +1363,7 @@ export type Staff = {
   ];
   characters: [
     {
-      sort: CharacterSort | null[] | null;
+      sort: (CharacterSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -1371,7 +1371,7 @@ export type Staff = {
   ];
   characterMedia: [
     {
-      sort: MediaSort | null[] | null;
+      sort: (MediaSort | null)[] | null;
       onList: Boolean | null;
       page: Int | null;
       perPage: Int | null;
@@ -1393,7 +1393,7 @@ export type StaffName = {
   last: String | null;
   full: String | null;
   native: String | null;
-  alternative: String | null[] | null;
+  alternative: (String | null)[] | null;
   userPreferred: String | null;
 };
 
@@ -1409,8 +1409,8 @@ export type StaffRoleType = {
 };
 
 export type StaffConnection = {
-  edges: StaffEdge | null[] | null;
-  nodes: Staff | null[] | null;
+  edges: (StaffEdge | null)[] | null;
+  nodes: (Staff | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1432,8 +1432,8 @@ export enum StudioSort {
 }
 
 export type StudioConnection = {
-  edges: StudioEdge | null[] | null;
-  nodes: Studio | null[] | null;
+  edges: (StudioEdge | null)[] | null;
+  nodes: (Studio | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1450,7 +1450,7 @@ export type Studio = {
   isAnimationStudio: Boolean;
   media: [
     {
-      sort: MediaSort | null[] | null;
+      sort: (MediaSort | null)[] | null;
       isMain: Boolean | null;
       onList: Boolean | null;
       page: Int | null;
@@ -1473,8 +1473,8 @@ export type AiringSchedule = {
 };
 
 export type AiringScheduleConnection = {
-  edges: AiringScheduleEdge | null[] | null;
-  nodes: AiringSchedule | null[] | null;
+  edges: (AiringScheduleEdge | null)[] | null;
+  nodes: (AiringSchedule | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1501,8 +1501,8 @@ export enum MediaTrendSort {
 }
 
 export type MediaTrendConnection = {
-  edges: MediaTrendEdge | null[] | null;
-  nodes: MediaTrend | null[] | null;
+  edges: (MediaTrendEdge | null)[] | null;
+  nodes: (MediaTrend | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1613,8 +1613,8 @@ export enum ReviewSort {
 }
 
 export type ReviewConnection = {
-  edges: ReviewEdge | null[] | null;
-  nodes: Review | null[] | null;
+  edges: (ReviewEdge | null)[] | null;
+  nodes: (Review | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1660,8 +1660,8 @@ export enum RecommendationSort {
 }
 
 export type RecommendationConnection = {
-  edges: RecommendationEdge | null[] | null;
-  nodes: Recommendation | null[] | null;
+  edges: (RecommendationEdge | null)[] | null;
+  nodes: (Recommendation | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -1685,9 +1685,9 @@ export enum RecommendationRating {
 }
 
 export type MediaStats = {
-  scoreDistribution: ScoreDistribution | null[] | null;
-  statusDistribution: StatusDistribution | null[] | null;
-  airingProgression: AiringProgression | null[] | null;
+  scoreDistribution: (ScoreDistribution | null)[] | null;
+  statusDistribution: (StatusDistribution | null)[] | null;
+  airingProgression: (AiringProgression | null)[] | null;
 };
 
 export type ScoreDistribution = {
@@ -1738,86 +1738,86 @@ export type UserStatistics = {
   formats: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserFormatStatistic | null[] | null
+    (UserFormatStatistic | null)[] | null
   ];
   statuses: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserStatusStatistic | null[] | null
+    (UserStatusStatistic | null)[] | null
   ];
   scores: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserScoreStatistic | null[] | null
+    (UserScoreStatistic | null)[] | null
   ];
   lengths: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserLengthStatistic | null[] | null
+    (UserLengthStatistic | null)[] | null
   ];
   releaseYears: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserReleaseYearStatistic | null[] | null
+    (UserReleaseYearStatistic | null)[] | null
   ];
   startYears: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserStartYearStatistic | null[] | null
+    (UserStartYearStatistic | null)[] | null
   ];
   genres: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserGenreStatistic | null[] | null
+    (UserGenreStatistic | null)[] | null
   ];
   tags: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserTagStatistic | null[] | null
+    (UserTagStatistic | null)[] | null
   ];
   countries: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserCountryStatistic | null[] | null
+    (UserCountryStatistic | null)[] | null
   ];
   voiceActors: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserVoiceActorStatistic | null[] | null
+    (UserVoiceActorStatistic | null)[] | null
   ];
   staff: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserStaffStatistic | null[] | null
+    (UserStaffStatistic | null)[] | null
   ];
   studios: [
     {
       limit: Int | null;
-      sort: UserStatisticsSort | null[] | null;
+      sort: (UserStatisticsSort | null)[] | null;
     },
-    UserStudioStatistic | null[] | null
+    (UserStudioStatistic | null)[] | null
   ];
 };
 
@@ -1837,7 +1837,7 @@ export type UserFormatStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   format: MediaFormat | null;
 };
 
@@ -1846,7 +1846,7 @@ export type UserStatusStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   status: MediaListStatus | null;
 };
 
@@ -1855,7 +1855,7 @@ export type UserScoreStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   score: Int | null;
 };
 
@@ -1864,7 +1864,7 @@ export type UserLengthStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   length: String | null;
 };
 
@@ -1873,7 +1873,7 @@ export type UserReleaseYearStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   releaseYear: Int | null;
 };
 
@@ -1882,7 +1882,7 @@ export type UserStartYearStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   startYear: Int | null;
 };
 
@@ -1891,7 +1891,7 @@ export type UserGenreStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   genre: String | null;
 };
 
@@ -1900,7 +1900,7 @@ export type UserTagStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   tag: MediaTag | null;
 };
 
@@ -1909,7 +1909,7 @@ export type UserCountryStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   country: CountryCode | null;
 };
 
@@ -1918,9 +1918,9 @@ export type UserVoiceActorStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   voiceActor: Staff | null;
-  characterIds: Int | null[];
+  characterIds: (Int | null)[];
 };
 
 export type UserStaffStatistic = {
@@ -1928,7 +1928,7 @@ export type UserStaffStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   staff: Staff | null;
 };
 
@@ -1937,7 +1937,7 @@ export type UserStudioStatistic = {
   meanScore: Float;
   minutesWatched: Int;
   chaptersRead: Int;
-  mediaIds: Int | null[];
+  mediaIds: (Int | null)[];
   studio: Studio | null;
 };
 
@@ -1962,21 +1962,21 @@ export enum ModRole {
 export type UserStats = {
   watchedTime: Int | null;
   chaptersRead: Int | null;
-  activityHistory: UserActivityHistory | null[] | null;
-  animeStatusDistribution: StatusDistribution | null[] | null;
-  mangaStatusDistribution: StatusDistribution | null[] | null;
-  animeScoreDistribution: ScoreDistribution | null[] | null;
-  mangaScoreDistribution: ScoreDistribution | null[] | null;
+  activityHistory: (UserActivityHistory | null)[] | null;
+  animeStatusDistribution: (StatusDistribution | null)[] | null;
+  mangaStatusDistribution: (StatusDistribution | null)[] | null;
+  animeScoreDistribution: (ScoreDistribution | null)[] | null;
+  mangaScoreDistribution: (ScoreDistribution | null)[] | null;
   animeListScores: ListScoreStats | null;
   mangaListScores: ListScoreStats | null;
-  favouredGenresOverview: GenreStats | null[] | null;
-  favouredGenres: GenreStats | null[] | null;
-  favouredTags: TagStats | null[] | null;
-  favouredActors: StaffStats | null[] | null;
-  favouredStaff: StaffStats | null[] | null;
-  favouredStudios: StudioStats | null[] | null;
-  favouredYears: YearStats | null[] | null;
-  favouredFormats: FormatStats | null[] | null;
+  favouredGenresOverview: (GenreStats | null)[] | null;
+  favouredGenres: (GenreStats | null)[] | null;
+  favouredTags: (TagStats | null)[] | null;
+  favouredActors: (StaffStats | null)[] | null;
+  favouredStaff: (StaffStats | null)[] | null;
+  favouredStudios: (StudioStats | null)[] | null;
+  favouredYears: (YearStats | null)[] | null;
+  favouredFormats: (FormatStats | null)[] | null;
 };
 
 export type UserActivityHistory = {
@@ -2105,7 +2105,7 @@ export type AiringNotification = {
   type: NotificationType | null;
   animeId: Int;
   episode: Int;
-  contexts: String | null[] | null;
+  contexts: (String | null)[] | null;
   createdAt: Int | null;
   media: Media | null;
 };
@@ -2151,8 +2151,8 @@ export type MessageActivity = {
   createdAt: Int;
   recipient: User | null;
   messenger: User | null;
-  replies: ActivityReply | null[] | null;
-  likes: User | null[] | null;
+  replies: (ActivityReply | null)[] | null;
+  likes: (User | null)[] | null;
 };
 
 export enum ActivityType {
@@ -2177,7 +2177,7 @@ export type ActivityReply = {
   isLiked: Boolean | null;
   createdAt: Int;
   user: User | null;
-  likes: User | null[] | null;
+  likes: (User | null)[] | null;
 };
 
 export type ActivityMentionNotification = {
@@ -2212,8 +2212,8 @@ export type TextActivity = {
   isPinned: Boolean | null;
   createdAt: Int;
   user: User | null;
-  replies: ActivityReply | null[] | null;
-  likes: User | null[] | null;
+  replies: (ActivityReply | null)[] | null;
+  likes: (User | null)[] | null;
 };
 
 export type ListActivity = {
@@ -2232,8 +2232,8 @@ export type ListActivity = {
   createdAt: Int;
   user: User | null;
   media: Media | null;
-  replies: ActivityReply | null[] | null;
-  likes: User | null[] | null;
+  replies: (ActivityReply | null)[] | null;
+  likes: (User | null)[] | null;
 };
 
 export type ActivityReplyNotification = {
@@ -2316,10 +2316,10 @@ export type Thread = {
   updatedAt: Int;
   user: User | null;
   replyUser: User | null;
-  likes: User | null[] | null;
+  likes: (User | null)[] | null;
   siteUrl: String | null;
-  categories: ThreadCategory | null[] | null;
-  mediaCategories: Media | null[] | null;
+  categories: (ThreadCategory | null)[] | null;
+  mediaCategories: (Media | null)[] | null;
 };
 
 export type ThreadCategory = {
@@ -2344,7 +2344,7 @@ export type ThreadComment = {
   updatedAt: Int;
   thread: Thread | null;
   user: User | null;
-  likes: User | null[] | null;
+  likes: (User | null)[] | null;
   childComments: Json | null;
   isLocked: Boolean | null;
 };
@@ -2420,7 +2420,7 @@ export type MediaMergeNotification = {
   id: Int;
   type: NotificationType | null;
   mediaId: Int;
-  deletedMediaTitles: String | null[] | null;
+  deletedMediaTitles: (String | null)[] | null;
   context: String | null;
   reason: String | null;
   createdAt: Int | null;
@@ -2474,25 +2474,25 @@ export enum LikeableType {
 }
 
 export type MediaListCollection = {
-  lists: MediaListGroup | null[] | null;
+  lists: (MediaListGroup | null)[] | null;
   user: User | null;
   hasNextChunk: Boolean | null;
   statusLists: [
     {
       asArray: Boolean | null;
     },
-    MediaList | null[] | null[] | null
+    ((MediaList | null)[] | null)[] | null
   ];
   customLists: [
     {
       asArray: Boolean | null;
     },
-    MediaList | null[] | null[] | null
+    ((MediaList | null)[] | null)[] | null
   ];
 };
 
 export type MediaListGroup = {
-  entries: MediaList | null[] | null;
+  entries: (MediaList | null)[] | null;
   name: String | null;
   isCustomList: Boolean | null;
   isSplitCompletedList: Boolean | null;
@@ -2512,7 +2512,7 @@ export type AniChartUser = {
 export type SiteStatistics = {
   users: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2520,7 +2520,7 @@ export type SiteStatistics = {
   ];
   anime: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2528,7 +2528,7 @@ export type SiteStatistics = {
   ];
   manga: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2536,7 +2536,7 @@ export type SiteStatistics = {
   ];
   characters: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2544,7 +2544,7 @@ export type SiteStatistics = {
   ];
   staff: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2552,7 +2552,7 @@ export type SiteStatistics = {
   ];
   studios: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2560,7 +2560,7 @@ export type SiteStatistics = {
   ];
   reviews: [
     {
-      sort: SiteTrendSort | null[] | null;
+      sort: (SiteTrendSort | null)[] | null;
       page: Int | null;
       perPage: Int | null;
     },
@@ -2578,8 +2578,8 @@ export enum SiteTrendSort {
 }
 
 export type SiteTrendConnection = {
-  edges: SiteTrendEdge | null[] | null;
-  nodes: SiteTrend | null[] | null;
+  edges: (SiteTrendEdge | null)[] | null;
+  nodes: (SiteTrend | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
@@ -2610,14 +2610,14 @@ export type Mutation = {
       rowOrder: String | null;
       profileColor: String | null;
       donatorBadge: String | null;
-      notificationOptions: NotificationOptionInput | null[] | null;
+      notificationOptions: (NotificationOptionInput | null)[] | null;
       timezone: String | null;
       activityMergeTime: Int | null;
       animeListOptions: MediaListOptionsInput | null;
       mangaListOptions: MediaListOptionsInput | null;
       staffNameLanguage: UserStaffNameLanguage | null;
       restrictMessagesToFollowing: Boolean | null;
-      disabledListActivity: ListActivityOptionInput | null[] | null;
+      disabledListActivity: (ListActivityOptionInput | null)[] | null;
     },
     User | null
   ];
@@ -2635,8 +2635,8 @@ export type Mutation = {
       private: Boolean | null;
       notes: String | null;
       hiddenFromStatusLists: Boolean | null;
-      customLists: String | null[] | null;
-      advancedScores: Float | null[] | null;
+      customLists: (String | null)[] | null;
+      advancedScores: (Float | null)[] | null;
       startedAt: FuzzyDateInput | null;
       completedAt: FuzzyDateInput | null;
     },
@@ -2654,12 +2654,12 @@ export type Mutation = {
       private: Boolean | null;
       notes: String | null;
       hiddenFromStatusLists: Boolean | null;
-      advancedScores: Float | null[] | null;
+      advancedScores: (Float | null)[] | null;
       startedAt: FuzzyDateInput | null;
       completedAt: FuzzyDateInput | null;
-      ids: Int | null[] | null;
+      ids: (Int | null)[] | null;
     },
-    MediaList | null[] | null
+    (MediaList | null)[] | null
   ];
   DeleteMediaListEntry: [
     {
@@ -2740,7 +2740,7 @@ export type Mutation = {
       id: Int | null;
       type: LikeableType | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   ToggleLikeV2: [
     {
@@ -2767,16 +2767,16 @@ export type Mutation = {
   ];
   UpdateFavouriteOrder: [
     {
-      animeIds: Int | null[] | null;
-      mangaIds: Int | null[] | null;
-      characterIds: Int | null[] | null;
-      staffIds: Int | null[] | null;
-      studioIds: Int | null[] | null;
-      animeOrder: Int | null[] | null;
-      mangaOrder: Int | null[] | null;
-      characterOrder: Int | null[] | null;
-      staffOrder: Int | null[] | null;
-      studioOrder: Int | null[] | null;
+      animeIds: (Int | null)[] | null;
+      mangaIds: (Int | null)[] | null;
+      characterIds: (Int | null)[] | null;
+      staffIds: (Int | null)[] | null;
+      studioIds: (Int | null)[] | null;
+      animeOrder: (Int | null)[] | null;
+      mangaOrder: (Int | null)[] | null;
+      characterOrder: (Int | null)[] | null;
+      staffOrder: (Int | null)[] | null;
+      studioOrder: (Int | null)[] | null;
     },
     Favourites | null
   ];
@@ -2817,8 +2817,8 @@ export type Mutation = {
       id: Int | null;
       title: String | null;
       body: String | null;
-      categories: Int | null[] | null;
-      mediaCategories: Int | null[] | null;
+      categories: (Int | null)[] | null;
+      mediaCategories: (Int | null)[] | null;
       sticky: Boolean | null;
       locked: Boolean | null;
     },
@@ -2864,7 +2864,7 @@ export type Mutation = {
   ];
   UpdateAniChartHighlights: [
     {
-      highlights: AniChartHighlightInput | null[] | null;
+      highlights: (AniChartHighlightInput | null)[] | null;
     },
     Json | null
   ];
@@ -2876,10 +2876,10 @@ export type NotificationOptionInput = {
 };
 
 export type MediaListOptionsInput = {
-  sectionOrder: String | null[] | null;
+  sectionOrder: (String | null)[] | null;
   splitCompletedSectionByFormat: Boolean | null;
-  customLists: String | null[] | null;
-  advancedScoring: String | null[] | null;
+  customLists: (String | null)[] | null;
+  advancedScoring: (String | null)[] | null;
   advancedScoringEnabled: Boolean | null;
   theme: String | null;
 };
@@ -2921,9 +2921,9 @@ export type InternalPage = {
       assigneeId: Int | null;
       status: SubmissionStatus | null;
       type: MediaType | null;
-      sort: SubmissionSort | null[] | null;
+      sort: (SubmissionSort | null)[] | null;
     },
-    MediaSubmission | null[] | null
+    (MediaSubmission | null)[] | null
   ];
   characterSubmissions: [
     {
@@ -2931,9 +2931,9 @@ export type InternalPage = {
       userId: Int | null;
       assigneeId: Int | null;
       status: SubmissionStatus | null;
-      sort: SubmissionSort | null[] | null;
+      sort: (SubmissionSort | null)[] | null;
     },
-    CharacterSubmission | null[] | null
+    (CharacterSubmission | null)[] | null
   ];
   staffSubmissions: [
     {
@@ -2941,9 +2941,9 @@ export type InternalPage = {
       userId: Int | null;
       assigneeId: Int | null;
       status: SubmissionStatus | null;
-      sort: SubmissionSort | null[] | null;
+      sort: (SubmissionSort | null)[] | null;
     },
-    StaffSubmission | null[] | null
+    (StaffSubmission | null)[] | null
   ];
   revisionHistory: [
     {
@@ -2953,27 +2953,27 @@ export type InternalPage = {
       staffId: Int | null;
       studioId: Int | null;
     },
-    RevisionHistory | null[] | null
+    (RevisionHistory | null)[] | null
   ];
   reports: [
     {
       reporterId: Int | null;
       reportedId: Int | null;
     },
-    Report | null[] | null
+    (Report | null)[] | null
   ];
   modActions: [
     {
       userId: Int | null;
       modId: Int | null;
     },
-    ModAction | null[] | null
+    (ModAction | null)[] | null
   ];
   userBlockSearch: [
     {
       search: String | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   pageInfo: PageInfo | null;
   users: [
@@ -2982,9 +2982,9 @@ export type InternalPage = {
       name: String | null;
       isModerator: Boolean | null;
       search: String | null;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   media: [
     {
@@ -3016,23 +3016,23 @@ export type InternalPage = {
       isLicensed: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       idMal_not: Int | null;
-      idMal_in: Int | null[] | null;
-      idMal_not_in: Int | null[] | null;
+      idMal_in: (Int | null)[] | null;
+      idMal_not_in: (Int | null)[] | null;
       startDate_greater: FuzzyDateInt | null;
       startDate_lesser: FuzzyDateInt | null;
       startDate_like: String | null;
       endDate_greater: FuzzyDateInt | null;
       endDate_lesser: FuzzyDateInt | null;
       endDate_like: String | null;
-      format_in: MediaFormat | null[] | null;
+      format_in: (MediaFormat | null)[] | null;
       format_not: MediaFormat | null;
-      format_not_in: MediaFormat | null[] | null;
-      status_in: MediaStatus | null[] | null;
+      format_not_in: (MediaFormat | null)[] | null;
+      status_in: (MediaStatus | null)[] | null;
       status_not: MediaStatus | null;
-      status_not_in: MediaStatus | null[] | null;
+      status_not_in: (MediaStatus | null)[] | null;
       episodes_greater: Int | null;
       episodes_lesser: Int | null;
       duration_greater: Int | null;
@@ -3041,24 +3041,24 @@ export type InternalPage = {
       chapters_lesser: Int | null;
       volumes_greater: Int | null;
       volumes_lesser: Int | null;
-      genre_in: String | null[] | null;
-      genre_not_in: String | null[] | null;
-      tag_in: String | null[] | null;
-      tag_not_in: String | null[] | null;
-      tagCategory_in: String | null[] | null;
-      tagCategory_not_in: String | null[] | null;
-      licensedBy_in: String | null[] | null;
-      licensedById_in: Int | null[] | null;
+      genre_in: (String | null)[] | null;
+      genre_not_in: (String | null)[] | null;
+      tag_in: (String | null)[] | null;
+      tag_not_in: (String | null)[] | null;
+      tagCategory_in: (String | null)[] | null;
+      tagCategory_not_in: (String | null)[] | null;
+      licensedBy_in: (String | null)[] | null;
+      licensedById_in: (Int | null)[] | null;
       averageScore_not: Int | null;
       averageScore_greater: Int | null;
       averageScore_lesser: Int | null;
       popularity_not: Int | null;
       popularity_greater: Int | null;
       popularity_lesser: Int | null;
-      source_in: MediaSource | null[] | null;
-      sort: MediaSort | null[] | null;
+      source_in: (MediaSource | null)[] | null;
+      sort: (MediaSort | null)[] | null;
     },
-    Media | null[] | null
+    (Media | null)[] | null
   ];
   characters: [
     {
@@ -3066,11 +3066,11 @@ export type InternalPage = {
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: CharacterSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (CharacterSort | null)[] | null;
     },
-    Character | null[] | null
+    (Character | null)[] | null
   ];
   staff: [
     {
@@ -3078,22 +3078,22 @@ export type InternalPage = {
       isBirthday: Boolean | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: StaffSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (StaffSort | null)[] | null;
     },
-    Staff | null[] | null
+    (Staff | null)[] | null
   ];
   studios: [
     {
       id: Int | null;
       search: String | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
-      sort: StudioSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
+      sort: (StudioSort | null)[] | null;
     },
-    Studio | null[] | null
+    (Studio | null)[] | null
   ];
   mediaList: [
     {
@@ -3108,12 +3108,12 @@ export type InternalPage = {
       startedAt: FuzzyDateInt | null;
       completedAt: FuzzyDateInt | null;
       compareWithAuthList: Boolean | null;
-      userId_in: Int | null[] | null;
-      status_in: MediaListStatus | null[] | null;
-      status_not_in: MediaListStatus | null[] | null;
+      userId_in: (Int | null)[] | null;
+      status_in: (MediaListStatus | null)[] | null;
+      status_not_in: (MediaListStatus | null)[] | null;
       status_not: MediaListStatus | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       notes_like: String | null;
       startedAt_greater: FuzzyDateInt | null;
       startedAt_lesser: FuzzyDateInt | null;
@@ -3121,9 +3121,9 @@ export type InternalPage = {
       completedAt_greater: FuzzyDateInt | null;
       completedAt_lesser: FuzzyDateInt | null;
       completedAt_like: String | null;
-      sort: MediaListSort | null[] | null;
+      sort: (MediaListSort | null)[] | null;
     },
-    MediaList | null[] | null
+    (MediaList | null)[] | null
   ];
   airingSchedules: [
     {
@@ -3133,21 +3133,21 @@ export type InternalPage = {
       airingAt: Int | null;
       notYetAired: Boolean | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       episode_not: Int | null;
-      episode_in: Int | null[] | null;
-      episode_not_in: Int | null[] | null;
+      episode_in: (Int | null)[] | null;
+      episode_not_in: (Int | null)[] | null;
       episode_greater: Int | null;
       episode_lesser: Int | null;
       airingAt_greater: Int | null;
       airingAt_lesser: Int | null;
-      sort: AiringSort | null[] | null;
+      sort: (AiringSort | null)[] | null;
     },
-    AiringSchedule | null[] | null
+    (AiringSchedule | null)[] | null
   ];
   mediaTrends: [
     {
@@ -3159,8 +3159,8 @@ export type InternalPage = {
       episode: Int | null;
       releasing: Boolean | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       date_greater: Int | null;
       date_lesser: Int | null;
       trending_greater: Int | null;
@@ -3175,31 +3175,31 @@ export type InternalPage = {
       episode_greater: Int | null;
       episode_lesser: Int | null;
       episode_not: Int | null;
-      sort: MediaTrendSort | null[] | null;
+      sort: (MediaTrendSort | null)[] | null;
     },
-    MediaTrend | null[] | null
+    (MediaTrend | null)[] | null
   ];
   notifications: [
     {
       type: NotificationType | null;
       resetNotificationCount: Boolean | null;
-      type_in: NotificationType | null[] | null;
+      type_in: (NotificationType | null)[] | null;
     },
     NotificationUnion[] | null
   ];
   followers: [
     {
       userId: Int;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   following: [
     {
       userId: Int;
-      sort: UserSort | null[] | null;
+      sort: (UserSort | null)[] | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
   activities: [
     {
@@ -3213,23 +3213,23 @@ export type InternalPage = {
       hasRepliesOrTypeText: Boolean | null;
       createdAt: Int | null;
       id_not: Int | null;
-      id_in: Int | null[] | null;
-      id_not_in: Int | null[] | null;
+      id_in: (Int | null)[] | null;
+      id_not_in: (Int | null)[] | null;
       userId_not: Int | null;
-      userId_in: Int | null[] | null;
-      userId_not_in: Int | null[] | null;
+      userId_in: (Int | null)[] | null;
+      userId_not_in: (Int | null)[] | null;
       messengerId_not: Int | null;
-      messengerId_in: Int | null[] | null;
-      messengerId_not_in: Int | null[] | null;
+      messengerId_in: (Int | null)[] | null;
+      messengerId_not_in: (Int | null)[] | null;
       mediaId_not: Int | null;
-      mediaId_in: Int | null[] | null;
-      mediaId_not_in: Int | null[] | null;
+      mediaId_in: (Int | null)[] | null;
+      mediaId_not_in: (Int | null)[] | null;
       type_not: ActivityType | null;
-      type_in: ActivityType | null[] | null;
-      type_not_in: ActivityType | null[] | null;
+      type_in: (ActivityType | null)[] | null;
+      type_not_in: (ActivityType | null)[] | null;
       createdAt_greater: Int | null;
       createdAt_lesser: Int | null;
-      sort: ActivitySort | null[] | null;
+      sort: (ActivitySort | null)[] | null;
     },
     ActivityUnion[] | null
   ];
@@ -3238,7 +3238,7 @@ export type InternalPage = {
       id: Int | null;
       activityId: Int | null;
     },
-    ActivityReply | null[] | null
+    (ActivityReply | null)[] | null
   ];
   threads: [
     {
@@ -3249,19 +3249,19 @@ export type InternalPage = {
       categoryId: Int | null;
       mediaCategoryId: Int | null;
       search: String | null;
-      id_in: Int | null[] | null;
-      sort: ThreadSort | null[] | null;
+      id_in: (Int | null)[] | null;
+      sort: (ThreadSort | null)[] | null;
     },
-    Thread | null[] | null
+    (Thread | null)[] | null
   ];
   threadComments: [
     {
       id: Int | null;
       threadId: Int | null;
       userId: Int | null;
-      sort: ThreadCommentSort | null[] | null;
+      sort: (ThreadCommentSort | null)[] | null;
     },
-    ThreadComment | null[] | null
+    (ThreadComment | null)[] | null
   ];
   reviews: [
     {
@@ -3269,9 +3269,9 @@ export type InternalPage = {
       mediaId: Int | null;
       userId: Int | null;
       mediaType: MediaType | null;
-      sort: ReviewSort | null[] | null;
+      sort: (ReviewSort | null)[] | null;
     },
-    Review | null[] | null
+    (Review | null)[] | null
   ];
   recommendations: [
     {
@@ -3283,16 +3283,16 @@ export type InternalPage = {
       onList: Boolean | null;
       rating_greater: Int | null;
       rating_lesser: Int | null;
-      sort: RecommendationSort | null[] | null;
+      sort: (RecommendationSort | null)[] | null;
     },
-    Recommendation | null[] | null
+    (Recommendation | null)[] | null
   ];
   likes: [
     {
       likeableId: Int | null;
       type: LikeableType | null;
     },
-    User | null[] | null
+    (User | null)[] | null
   ];
 };
 
@@ -3316,15 +3316,15 @@ export type MediaSubmission = {
   submitterStats: Json | null;
   notes: String | null;
   source: String | null;
-  changes: String | null[] | null;
+  changes: (String | null)[] | null;
   locked: Boolean | null;
   media: Media | null;
   submission: Media | null;
-  characters: MediaSubmissionComparison | null[] | null;
-  staff: MediaSubmissionComparison | null[] | null;
-  studios: MediaSubmissionComparison | null[] | null;
-  relations: MediaEdge | null[] | null;
-  externalLinks: MediaSubmissionComparison | null[] | null;
+  characters: (MediaSubmissionComparison | null)[] | null;
+  staff: (MediaSubmissionComparison | null)[] | null;
+  studios: (MediaSubmissionComparison | null)[] | null;
+  relations: (MediaEdge | null)[] | null;
+  externalLinks: (MediaSubmissionComparison | null)[] | null;
   createdAt: Int | null;
 };
 
@@ -3463,21 +3463,21 @@ export type CharacterNameInput = {
   middle: String | null;
   last: String | null;
   native: String | null;
-  alternative: String | null[] | null;
-  alternativeSpoiler: String | null[] | null;
+  alternative: (String | null)[] | null;
+  alternativeSpoiler: (String | null)[] | null;
 };
 
 export type CharacterSubmissionConnection = {
-  edges: CharacterSubmissionEdge | null[] | null;
-  nodes: CharacterSubmission | null[] | null;
+  edges: (CharacterSubmissionEdge | null)[] | null;
+  nodes: (CharacterSubmission | null)[] | null;
   pageInfo: PageInfo | null;
 };
 
 export type CharacterSubmissionEdge = {
   node: CharacterSubmission | null;
   role: CharacterRole | null;
-  voiceActors: Staff | null[] | null;
-  submittedVoiceActors: StaffSubmission | null[] | null;
+  voiceActors: (Staff | null)[] | null;
+  submittedVoiceActors: (StaffSubmission | null)[] | null;
 };
 
 export type StaffNameInput = {
@@ -3485,11 +3485,11 @@ export type StaffNameInput = {
   middle: String | null;
   last: String | null;
   native: String | null;
-  alternative: String | null[] | null;
+  alternative: (String | null)[] | null;
 };
 
 export type UserModData = {
-  alts: User | null[] | null;
+  alts: (User | null)[] | null;
   bans: Json | null;
   ip: Json | null;
   counts: Json | null;

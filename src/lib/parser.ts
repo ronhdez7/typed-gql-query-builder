@@ -6,16 +6,20 @@ export class QueryParser {
   constructor(private readonly schema: ModelSchema) {}
 
   parseFields(
+    // user input
     query: BuilderResult | boolean | undefined,
-    model: ModelField
+    // defined model
+    model: ModelField | ModelField
   ): string {
     let output = "";
 
     if (typeof query === "undefined") return "";
     else if (typeof query === "boolean") {
       if (query === false) return "";
+
       output += this.parseAllFields(model);
     } else {
+      // go through every field
       for (const queryKey in query) {
         output += "\n" + queryKey;
         const queryField = query[queryKey];
@@ -33,7 +37,7 @@ export class QueryParser {
           let valName: string;
           if (typeof modelField === "string") valName = removeMark(modelField);
           else if (modelField.length === 1) valName = removeMark(modelField[0]);
-          else valName = removeMark(grabString(modelField[1]));
+          else valName = removeMark(grabString(modelField[1]!));
           const newModel = this.schema[valName];
           if (typeof newModel !== "object") continue;
           output += `{\n ${this.parseAllFields(newModel)}\n}`;
@@ -47,7 +51,7 @@ export class QueryParser {
             // handle args
             const args = queryField["args"] as Record<string, any>;
             output += this.parseArguments(args);
-            valName = removeMark(grabString(modelField[1]));
+            valName = removeMark(grabString(modelField[1]!));
             data = queryField["data"];
           }
           const fields = this.schema[valName];
@@ -100,6 +104,8 @@ export class QueryParser {
         output += ` {\n${this.parseAllFields(field, visited)}\n}\n`;
       } else {
         const args = val[0];
+        if (typeof args === "string") continue;
+
         let argsRequired = false;
         for (const argKey in args) {
           const argVal = args[argKey];
@@ -117,7 +123,7 @@ export class QueryParser {
           continue;
         }
 
-        const fieldVal = val[1];
+        const fieldVal = val[1] as string | string[];
         let valName = typeof fieldVal === "string" ? fieldVal : fieldVal[0];
         if (!valName) continue;
         if (valName.endsWith("!")) valName = valName.slice(0, -1);

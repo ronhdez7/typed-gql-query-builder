@@ -1,4 +1,5 @@
-import { Builder, BuilderProp, BuilderResult, QuerySchema } from "../types";
+import { Builder, BuilderProp, BuilderResult, ModelSchema } from "../types";
+import { BuiltQuery } from "./built";
 import { QueryParser } from "./parser";
 
 export class QueryBuilder<
@@ -8,27 +9,31 @@ export class QueryBuilder<
 > {
   private readonly parser: QueryParser;
 
-  constructor(private readonly schema: QuerySchema) {
+  constructor(private readonly schema: ModelSchema) {
     this.parser = new QueryParser(schema);
   }
 
-  query(nameOrQuery: Builder<Query> | string): string;
-  query(name: string, query: Builder<Query> | string): string;
-  query(
-    nameOrQuery: Builder<Query> | string,
-    maybeQuery?: Builder<Query> | string
-  ): string {
+  query<Q extends Builder<Query>>(nameOrQuery: Q | string): BuiltQuery<Q>;
+  query<Q extends Builder<Query>>(
+    name: string,
+    query: Q | string
+  ): BuiltQuery<Q>;
+  query<Q extends Builder<Query>>(
+    nameOrQuery: Q | string,
+    maybeQuery?: Q | string
+  ): BuiltQuery<Q> {
     let output = "query ";
 
     if (maybeQuery === undefined) {
-      if (typeof nameOrQuery === "string") return nameOrQuery;
+      if (typeof nameOrQuery === "string")
+        return new BuiltQuery<Q>(nameOrQuery);
       output += this.createQuery("Query", undefined, nameOrQuery);
+      return new BuiltQuery<Q>(output);
     } else {
-      if (typeof maybeQuery === "string") return maybeQuery;
+      if (typeof maybeQuery === "string") return new BuiltQuery<Q>(maybeQuery);
       output += this.createQuery("Query", nameOrQuery as string, maybeQuery);
+      return new BuiltQuery<Q>(output);
     }
-
-    return output;
   }
 
   mutation(nameOrMutation: Builder<Mutation> | string): string;
