@@ -19,5 +19,6 @@ export class BuiltQuery<T extends any> {
 
   setVariables(variables: Record<string, any>) {
     this.variables = { ...this.variables, variables };
+    return this;
   }
 }

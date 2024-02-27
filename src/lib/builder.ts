@@ -3,6 +3,7 @@ import { BuiltQuery } from "./built";
 import { QueryParser } from "./parser";
 
 export class QueryBuilder<
+  Schema extends BuilderProp,
   Query extends BuilderProp = any,
   Mutation extends BuilderProp = any,
   Subscription extends BuilderProp = any
@@ -11,6 +12,19 @@ export class QueryBuilder<
 
   constructor(private readonly schema: ModelSchema) {
     this.parser = new QueryParser(schema);
+  }
+
+  select<T extends keyof Schema>(
+    type: T,
+    query: Builder<Schema[T]>
+  ): Builder<Schema[T]> {
+    // type = type.toString()
+    // let output = `Fragment name on ${type} `;
+    // output += this.createQuery(type, undefined, query);
+
+    // return output;
+
+    return query;
   }
 
   query<Q extends Builder<Query>>(nameOrQuery: Q | string): BuiltQuery<Q>;

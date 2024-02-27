@@ -1,4 +1,6 @@
 import { gqlBuilder } from "..";
-import { Mutation, Query, schema } from "./generated/output";
+import { Schema, schema } from "./generated/output";
 
-export const gql = gqlBuilder<Query, Mutation>(schema);
+export const gql = gqlBuilder<Schema, Schema["Query"], Schema["Mutation"]>(
+  schema
+);

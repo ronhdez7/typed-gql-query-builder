@@ -1,4 +1,3 @@
-import { Query } from "../example/generated/output";
 import { BuiltQuery } from "../lib/built";
 
 type PickNullable<T> = {
@@ -63,8 +62,6 @@ export type ModelField = {
 };
 
 /* Extraction */
-// type GenS = { [key: string]: any };
-
 // prettier-ignore
 export type inferQuery<T extends BuiltQuery<any>> = T extends BuiltQuery<infer Q> ? Q : any;
 export type inferResponse<S extends any, T extends any> = S extends object

@@ -1,17 +1,17 @@
 import { inferQuery, inferResponse } from "../types";
-import { Query } from "./generated/output";
 import { gql } from "./gql";
 
 function main() {
+  const frag = gql.select("Media", {
+    id: true,
+    title: true,
+  });
   const query = gql.query("getPokemon", {
     Media: {
       args: {
         id: 15125,
       },
-      data: {
-        id: true,
-        title: true,
-      },
+      data: frag,
     },
     Activity: {
       args: {},
@@ -30,11 +30,7 @@ function main() {
     },
   });
 
-  const a: inferResponse<Query, inferQuery<typeof query>> = {} as any;
-
-  a.Media?.id;
-  a.Activity.userId;
-
+  // console.log(frag);
   console.log(query.getQuery());
   // console.log(mutation);
 }
